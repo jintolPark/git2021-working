@@ -69,12 +69,14 @@ git config --global user.name "Park jin seok"
   -> 원격저장소를 최초로 추가했을때 추가적인 작업이 필요함
       : git push -u 원격저장소 이름 브랜치명
       : git push -u origin master 
-       -> -u (--set-upstream) 로컬저장소에서 원격저장소로 업로드 허용
+       -> -u(--set-upstream) 로컬저장소에서 원격저장소로 업로드 허용
 
-
+ git status - > git add . -> git commit -m "메세지" -> git push
 
 =================================================
 3. 로컬저장소 생성(javascript)-> 코드생성 -> 원격저장소 올림
+
+
 
 
 
