@@ -1,0 +1,58 @@
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <title>CSS Property Basic</title>
+  <style>
+    body {
+      height: 2000px;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      /* absolute: 절대적인 */
+      /* 부모의 기준으로 위치를 정함 */
+      position: absolute;
+    }
+
+    .red {
+      background-color: red;
+      left: 10px;
+      top: 10px;
+    }
+
+    .green {
+      background-color: green;
+      left: 50px;
+      top: 50px;
+    }
+
+    .blue {
+      background-color: blue;
+      left: 90px;
+      top: 90px;
+    }
+
+    .wrapper {
+      position: relative;
+      border: 1px solid black;
+      /* 자식요소가 absolute이면 컨텐츠 높이 사라짐 */
+      /* 높이값을 수동으로 줘야함 */
+      height: 200px
+    }
+  </style>
+</head>
+
+<body>
+  <h1>고정 위치입니다.</h1>
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim eaque doloremque illo adipisci, soluta cumque culpa
+    fugit tempore vitae alias architecto unde ex quis, sapiente, quod rem pariatur velit consequatur.</p>
+  <div class="wrapper">
+    <div class="box red"></div>
+    <div class="box green"></div>
+    <div class="box blue"></div>
+  </div>
+</body>
+
+</html>

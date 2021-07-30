@@ -1,0 +1,43 @@
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    /* 시작태그와 컨탠트 사이의 before 영역에 스타일을 넣음 */
+    ul>li::before {
+      content: "✔";
+      margin-right: 0.5rem;
+      color: green;
+    }
+
+    /* 끝내그와 컨탠트 사이의 after 영역에 스타일을 넣음 */
+    ul>li::after {
+      content: "😊";
+      margin-right: 0.5rem;
+    }
+
+    .txt::before {
+      content: "👀";
+      margin-right: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>할 일</h1>
+  <ul>
+    <li>HTML 태그 공부하기</li>
+    <li>CSS 연습하기</li>
+  </ul>
+  <div class="txt">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate ipsam neque accusamus, quam
+    eligendi illum
+    molestiae natus? Sequi debitis nihil repudiandae quaerat, voluptas expedita voluptatem harum quia iure quos fuga.
+  </div>
+</body>
+
+</html>
