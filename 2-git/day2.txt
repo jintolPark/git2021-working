@@ -1,0 +1,40 @@
+javaweb_이름_과제파일명
+
+javaweb_박진석_recipe1.html
+
+링크 - a태크
+anchor : 닻
+이미지 - img태그
+
+mozila mdn
+
+
+hyper link reference
+
+
+1. 내부URL(Unified Resource Locater)
+:파일의 위치를 표기하는 공통적인 표기방법
+: . , /
+
+id: 영어로만 띄어쓰기 없음
+내부링크에는 http:// 주소 쓰지 말 것
+작성한 파일로 제출
+
+영어, 띄어쓰기하고싶으면 대시, 하이픈(-)
+spam-kimchi-bokeumbab
+--개발자을 사이에 관례적인 표기법
+--웹 상의 파일, 주소 표기
+
+
+
+image to base64
+파일 => base64문자열
+1mb -> 1.33mb
+용랑이 33퍼증가
+
+너비
+pc 면 1200이하
+
+
+
+

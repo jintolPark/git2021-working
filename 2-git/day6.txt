@@ -1,0 +1,9 @@
+css
+:상위요소의 스타일보다
+:하위요소의 스타일이 우선이다
+:광범위보다 좁은 범위가 우선이다
+*태그 .클래스 #id
+
+
+javascript(초급) -> ract, javascript(중급)
+java(초급) -> spring, java(중급)

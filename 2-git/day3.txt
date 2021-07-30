@@ -1,0 +1,12 @@
+재료 용량(수량)
+<strong> <em>
+
+list, table, form, card 
+
+
+block 형식
+div, h1~h6, p, 목록(ol,ul),테이블, from
+
+
+inline 형식
+span, a, input, 글자형식태그

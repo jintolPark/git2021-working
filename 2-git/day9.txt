@@ -1,0 +1,23 @@
+.flexbox 기본옵션 잘 알아야함 
+ flex item에 flexbox 옵션 먹는거
+
+.item 의 정렬 공간배분  ->  배치
+- 주축 (jutify-content) 정렬
+- 교차축(flex-align) 정렬
+- 늘리기(flex-glow) 공간배분
+- 줄이기(flex-shrink) 공간배분
+- flex-wrap, flex-direction  ->     flex-flow
+
+QUERY: 질의어 -> 물어보는 말
+
+vw(viewport-width) -> 뷰포트 가로대비 비율
+vh(viewport-height) -> 뷰포트 세로대비 비율
+
+px, %
+em, rem  <- 폰트 상대 크기
+vh, vw    <- 뷰포트 상대 크기
+
+
+디자인   퍼블리셔   웹개발자   시스템엔지니어   DBA   네트워크엔지니어
+
+디자인   프론트엔드개발   백엔드개발(클라우드,데브옵스)

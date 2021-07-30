@@ -1,0 +1,29 @@
+javascript(jquery) -> ext.js, angular.js, vue.js  -> react -> typescript
+c# -> c#(php) -> java(node.js)     -> java -> c#.NET -> Golang
+
+1. 컨셉 기획서
+- 컨셉트: 내용
+-비주얼 무드보드
+
+2. 만든거(UI디자인) (60~70)
+
+3. 디자인 가이드
+-기본폰트..
+-강조폰트..
+색상 5개, 강조색..
+
+수: 오전 강의없음 (평가설명 -> 지금하고있는거 완성)
+목: 오전 강의없음 (평가준비 -> 지금하고있는거 완성)
+목: 오후 평가진행(4시간 -> 컨셉트기획서, html/css, 디자인가이드)
+
+금: git 간단한 사용법, javascript
+
+
+
+
+
+float: 전체 레이아웃
+dispaly: 세부요소의 레이아웃
+
+grid: 전체레이아웃
+flexbox: 세부요소의 레이아웃
