@@ -19,3 +19,26 @@
 
 실수: 소숫점이 잆음, (부동소수점 숫자)
 ->12.123
+
+숫자형: number
+100
+100.0
+ 
+javascript의 기본적인 자료형
+. number: 100, 123.12 , infinity
+. string: 'a', "one", 'tow', `JavaScript`
+. boolean: true, false
+
+
+형-변환(type conversion)
+: 문자 -> 숫자 -> 불린 -> 문자
+: number, string, boolean, undefined, null
+
+
+: 사용자 입력값 문자 -> 숫자로 변환
+: 사용자 입력값 숫자-> 불린(true/false)
+
+
+
+
+
