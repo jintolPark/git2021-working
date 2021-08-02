@@ -1,0 +1,16 @@
+<html>
+
+<body>
+  <script>
+    let str = "AbcDEFg";
+    console.log(str.toLowerCase());  // abcdefg, 소문자로 변환
+
+    /* b + a + (+a) + a 
+     -> ba + (NaN) + a 
+     -> baNaNa -> lowerCase -> banana */
+    let quiz = "b" + "a" + + "a" + "a";   // banana
+    console.log(quiz.toLowerCase());
+  </script>
+</body>
+
+</html>
