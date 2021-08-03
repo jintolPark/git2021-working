@@ -1,0 +1,14 @@
+<html>
+
+<body>
+  <script>
+    // -1 이 truw 값이므로  실행
+    if (-1 || 0) alert('first');
+    // 0이 false 값이기 때문에 실행 x
+    if (-1 && 0) alert('second');
+    // 연산자 우선으로 -1 && 1 이었을때 1이 남고 null || 1 중 1이 참값이므로 실행
+    if (null || -1 && 1) alert('third');
+  </script>
+</body>
+
+</html>

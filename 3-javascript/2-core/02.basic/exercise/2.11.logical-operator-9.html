@@ -1,0 +1,23 @@
+<html>
+
+<body>
+  <script>
+    let main = prompt('"Admin"을 입력하세요');
+    if (main == 'Admin') {
+      let userPassword = prompt('비밀번호를 입력해주세요');
+      if (userPassword == 'TheMaster') {
+        alert('로그인 되었습니다.');
+      } else if (userPassword == '' || userPassword == null) {
+        alert('취소 되었습니다.');
+      } else {
+        alert('잘못된 비밀번호입니다. 다시시도해주세요.');
+      }
+    } else if (main == "" || main == null) {
+      alert('취소되었습니다.');
+    } else {
+      alert('아이디를 다시 입력해주세요.');
+    }
+  </script>
+</body>
+
+</html>

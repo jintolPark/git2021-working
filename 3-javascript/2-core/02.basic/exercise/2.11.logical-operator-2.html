@@ -1,0 +1,12 @@
+<html>
+
+<body>
+  <script>
+    alert(alert(1) || 2 || alert(3)); // 1, 2 ,undefined를 반환하기 때문에, OR 연산자는 다음 피연산자를 평가하게 됩니다
+    // alert(alert(1) || 2);    1 -> undefined 2 출력
+    // alert(2 || alert(3));    2 출력후 멈춤
+    // alert(2);
+  </script>
+</body>
+
+</html>
