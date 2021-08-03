@@ -1,0 +1,20 @@
+<html>
+
+<body>
+  <script>
+    // 연산자 우선순위
+    // 단항(++) > 이항(+,/) > 삼항(?:)
+    // 이항: 산술(+,/) > 비교(>,==) > 논리(&&,||)
+
+    // 연산자 우선순위 규칙에 따라, 비교연산 'age > 18' 이 먼저 실행 됩니다.
+    let age = 19;
+
+    // 조건식 ? 조건식이 true 일때 반환값 : 조건식이 false 일때 반환값
+    let accessAllowed = (age < 18) ? "ok" : "no";
+
+    console.log(accessAllowed);
+    console.log((age > 18) ? "ok" : "no");
+  </script>
+</body>
+
+</html>
