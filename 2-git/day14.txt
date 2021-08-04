@@ -15,3 +15,12 @@ if(browser == "Edge" {
 }esle if(browser == "Chrome"&& browser == 'Firefox'...'Opera'){
 ....
 }
+
+함수(function)
+-어떤 기능을 수행하는 코드 블럭(묶음)
+-재사용을 해야되는 상황에 쓸수 있다.
+-코드가 길때 코드를 분리하고 할 때
+
+
+
+

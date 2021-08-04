@@ -1,0 +1,30 @@
+<html>
+
+<body>
+  <script>
+    function showMessage() {
+      // // 지역 변수
+      // var var1 = 1;
+
+      // if (true) {
+      //   // 블럭 범위 변수
+      //   var var2 = 1;
+      // }
+      // console.log(var2)
+
+      //------------------------------------------------
+
+      // 지역(local) 변수 -> 함수 안의 변수
+      // let 변수명: 블럭(block) 범위 변수
+      let message = "안녕하세요!";
+
+      alert(message);
+    }
+
+    showMessage(); // 안녕하세요!
+
+    alert(message); // ReferenceError: message is not defined (message는 함수 내 지역 변수이기 때문에 에러가 발생합니다.)
+  </script>
+</body>
+
+</html>
