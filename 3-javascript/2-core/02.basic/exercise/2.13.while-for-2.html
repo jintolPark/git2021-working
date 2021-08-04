@@ -1,0 +1,26 @@
+<html>
+
+<body>
+  <script>
+    let i = 0;
+
+    // 전위 연산자 
+    // 1단계: ++i, i == 1 alert(1)
+    // 2단계: ++i, i == 2 alert(2)
+    // 3단계: ++i, i == 3 alert(3)
+    // 4단계: ++i, i == 4 alert(4)
+    // 5단계: ++i, i == 5 while문탈출
+    while (++i < 5) alert(i);
+
+    // 후위 연산
+    // 1단계: i == 0, i++, alert(1)
+    // 2단계: i == 1, i++, alert(2)
+    // 3단계: i == 2, i++, alert(3)
+    // 4단계: i == 3, i++, alert(4)
+    // 5단계: i == 4, i++, alert(5)
+    // 6단계: i == 5, i++, while문탈출
+    while (i++ < 5) alert(i);
+  </script>
+</body>
+
+</html>
