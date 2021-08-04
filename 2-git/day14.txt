@@ -1,0 +1,17 @@
+. for문 - 특정 횟수만큼 반복처리하고 싶을떄 사용
+-> 5번 반복, 데이터 개수만큼 반복
+-> 게시글 10개 반복출력
+
+.while문 - 
+
+
+
+
+i(index)
+-목차번호
+
+if(browser == "Edge" {
+....
+}esle if(browser == "Chrome"&& browser == 'Firefox'...'Opera'){
+....
+}
