@@ -1,0 +1,10 @@
+typescript - > microsoft
+-> google
+
+javascript -> microsoft
+-> facebook
+
+java - iot, 메모리, 성능
+ 인터넷, 웹
+
+microsoft -> C#(java + javascript), typescript(javascript + java)

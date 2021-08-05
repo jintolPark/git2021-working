@@ -2,14 +2,14 @@
 
 <body>
   <script>
-    let n = 10;
+    let n = 5;
     let result = '';
 
-    for (i = 0; i < n; i++) {
-      for (j = n - 1; j > i; j--) {
+    for (let i = 0; i < n; i++) {
+      for (let j = n - 1; j > i; j--) {
         result += ' ';
       }
-      for (k = 0; k <= (i * 2); k++) {
+      for (let k = 0; k <= (i * 2); k++) {
         result += '*';
       }
       result += '\n';

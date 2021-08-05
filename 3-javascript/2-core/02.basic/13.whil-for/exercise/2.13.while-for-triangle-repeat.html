@@ -1,0 +1,24 @@
+<html>
+
+<body>
+  <script>
+    let n = 5;
+
+    // n회만큼 반복해서 출력
+    for (let i = 1; i <= n; i++) {
+      // 한줄 문자열 저장공간(띄어쓰기 + *)
+      //띄어쓰기 반복문(n - i)만큼 반복
+
+      let blank = ' '.repeat(n - i)
+
+      // 빈공간을 추가함
+      // ' ', ' ', ' '...
+      let star = '*'.repeat(2 * i - 1)
+      // 별표를 한줄 문자열에 추가함
+      // "*", "**"
+      console.log(blank + star)
+    }
+  </script>
+</body>
+
+</html>
