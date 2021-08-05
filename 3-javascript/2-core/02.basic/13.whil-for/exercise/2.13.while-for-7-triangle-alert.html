@@ -1,0 +1,21 @@
+<html>
+
+<body>
+  <script>
+    let n = 5;
+    let result = '';
+
+    for (i = 0; i < n; i++) {
+      for (j = n - 1; j > i; j--) {
+        result += ' ';
+      }
+      for (k = 0; k <= (i * 2); k++) {
+        result += '*';
+      }
+      result += '\n'
+    }
+    alert(result)
+  </script>
+</body>
+
+</html>
