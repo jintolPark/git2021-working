@@ -2,10 +2,10 @@
 
 <body>
   <script>
-    let n = 7;
+    let n = 10;
 
-    for (let i = 0; i <= n + 4; i += 2) {
-      console.log(' '.repeat(((n + 4) - i) / 2) + '*'.repeat(i + 1))
+    for (let i = 0; i <= n + (n - 1); i += 2) {
+      console.log('1'.repeat(((n + (n - 1)) - i) / 2) + '*'.repeat(i + 1))
     }
   </script>
 </body>
