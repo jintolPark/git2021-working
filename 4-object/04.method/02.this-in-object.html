@@ -1,0 +1,25 @@
+<html>
+
+<body>
+  <script>
+    let name = 'Parkjinseok'
+    let user = {
+      name: "John",
+      age: 30,
+
+      sayHi() {
+        // 'this'는 '현재 객체'를 나타냅니다.
+        alert(`Hello, ${this.name}!`);
+      },
+      sayHiAndBye() {
+        this.sayHi(); // 객체 내부의 함수를 실행
+        alert(`bye, ${this.name}!`);
+      }
+    };
+
+    user.sayHi(); // Hello, John!
+    user.sayHiAndBye();
+  </script>
+</body>
+
+</html>

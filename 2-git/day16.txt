@@ -8,3 +8,26 @@ javascript
 - array
 
 class ->instantiate -> object
+
+변수, 연산자, 조건문, 반복문, 함수
+
+여러개 넣자, 객체, 배열
+
+ADD 
+MOV
+LOOP
+
+
+ladder.up().up().down().showStep();
+
+up() 함수는 ladder로(안에서) 호출
+
+ladder.up().up()
+ladder.up() == ladder
+
+ladder.up() -> ladder.up()을 실행하고 결과가 치환
+let result = ladder.up()
+console.log(result) 
+console.log(ladder.up()) 
+
+함수의 실행은 함수의 반환값과 같음

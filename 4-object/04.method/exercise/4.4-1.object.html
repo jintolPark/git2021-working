@@ -1,0 +1,19 @@
+<html>
+
+<body>
+  <script>
+    function makeUser() {
+      return {
+        name: "John",
+        ref: this
+      };
+    };
+
+    let user = makeUser();
+
+    alert(user.ref.name); // 결과가 어떻게 될까요?
+    // ref 가 this 값을 가지기 때문에 this.name 과 같은 값을  갖는다
+  </script>
+</body>
+
+</html>
