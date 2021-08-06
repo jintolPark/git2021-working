@@ -2,13 +2,6 @@
 
 <body>
   <script>
-    let schedule = {};
-
-    alert(isEmpty(schedule)); // true
-
-    schedule["8:30"] = "get up";
-
-    alert(isEmpty(schedule)); // false
 
     let isEmpty = (obj) => {
       for (let key in obj) {
@@ -16,6 +9,14 @@
       };
       return true
     }
+
+    let schedule = {};
+
+    alert(isEmpty(schedule)); // true
+
+    schedule["8:30"] = "get up";
+
+    alert(isEmpty(schedule)); // false
 
   </script>
 </body>
