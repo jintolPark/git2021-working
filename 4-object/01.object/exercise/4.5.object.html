@@ -1,0 +1,23 @@
+<html>
+
+<body>
+  <script>
+    // 함수 호출 전
+    let menu = {
+      width: 200,
+      height: 300,
+      title: "My menu"
+    };
+
+    let multiplyNumeric = (obj) => {
+      for (let key in obj) {
+        if (typeof obj[key]) {
+          obj += 2 * [key]
+        }
+      }
+    }
+    console.log(menu.key)
+  </script>
+</body>
+
+</html>

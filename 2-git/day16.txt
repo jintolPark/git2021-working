@@ -1,0 +1,10 @@
+number, string, boolean
+
+let str = 'sdssdsd';
+let num 123;
+
+javascript
+- object
+- array
+
+class ->instantiate -> object
