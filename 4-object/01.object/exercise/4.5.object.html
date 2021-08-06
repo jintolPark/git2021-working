@@ -8,15 +8,15 @@
       height: 300,
       title: "My menu"
     };
+    // multiplyNumeric(menu);
 
-    let multiplyNumeric = (obj) => {
+    function multiplyNumeric(obj) {
       for (let key in obj) {
-        if (typeof obj[key]) {
-          obj += 2 * [key]
+        if (typeof obj[key] == 'number') {
+          obj[key] *= 2;
         }
       }
     }
-    console.log(menu.key)
   </script>
 </body>
 
