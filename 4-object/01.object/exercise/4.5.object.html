@@ -8,7 +8,6 @@
       height: 300,
       title: "My menu"
     };
-    // multiplyNumeric(menu);
 
     function multiplyNumeric(obj) {
       for (let key in obj) {
@@ -17,6 +16,10 @@
         }
       }
     }
+
+    multiplyNumeric(menu);
+
+    alert("width: " + menu.width + " height: " + menu.height + " title: " + menu.title)
   </script>
 </body>
 
