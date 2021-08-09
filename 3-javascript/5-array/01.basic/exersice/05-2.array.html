@@ -1,0 +1,43 @@
+<html>
+
+<body>
+  <script>
+    function getMaxSubSum(arr) {
+      let max = 0;
+      let temp = 0;
+
+      for (let item of arr) {
+        temp += item; // 부분 합산 값 계산
+
+        // 현재 부분 합산 값이 최대 합산 값보다 크면 최대값으로
+        if (temp > max) {
+          max = temp;
+        }
+
+        // 현재 부분 합산 값이 0보다 작으면 부분 합산 값으로 0
+        if (temp < 0) {
+          temp = 0;
+        }
+      }
+
+      // O(n)
+      return max;
+    }
+
+
+    let test = [
+      [-1, 2, 3, -9],
+      [2, -1, 2, 3, -9],
+      [-1, 2, 3, -9, 11],
+      [-2, -1, 1, 2],
+      [100, -9, 2, -3, 5],
+      [1, 2, 3]
+    ];
+
+    for (let elm of test) {
+      console.log(getMaxSubSum(elm));
+    }
+  </script>
+</body>
+
+</html>

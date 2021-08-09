@@ -1,0 +1,46 @@
+<html>
+
+<body>
+  <script>
+    function getMaxSubSum(arr) {
+      let max = 0;
+      let temp = 0;
+
+      // 처음부터 끝까지 요소를 탐색
+      // length: 6, 0 ~ 6
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = i; j < arr.length; j++) {
+          temp += arr[j];
+          // 연산 횟수 (=반복문의 횟수)
+          // 1 + ~ n(length)
+          // (n+1) *n/2
+          // n(n+1) / 2
+          // n**2 / 2 + n / 2
+
+          // O(n^2)
+
+          if (temp > max) {
+            max = temp;
+          }
+        }
+        temp = 0;
+      }
+      return max;
+    }
+
+    let test = [
+      [-1, 2, 3, -9],
+      [2, -1, 2, 3, -9],
+      [-1, 2, 3, -9, 11],
+      [-2, -1, 1, 2],
+      [100, -9, 2, -3, 5],
+      [1, 2, 3]
+    ];
+
+    for (let elm of test) {
+      console.log(getMaxSubSum(elm));
+    }
+  </script>
+</body>
+
+</html>
