@@ -1,0 +1,17 @@
+1.
+빈객체성, 속성이있는객체생성
+속성값변경, 속성추가, 속성삭제
+
+2.
+객체속성반복 for-in
+
+
+---------------------------------
+stack
+LIFO(Last In First Out)
+
+Q(Queue)
+FIFO(First In First Out)
+. array
+. linked list
+. object/map

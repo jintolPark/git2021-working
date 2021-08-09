@@ -1,0 +1,50 @@
+<html>
+
+<body>
+  <script>
+    // 맵(Map): key-value형태의 자료구조, key를 문자 말고 다른것 가능
+    //  연관 배열 (associative array)
+    let queue = new Map();
+    let head = 0;  // 가장 앞쪽 key를 저장하는 변수
+    let tail = 0;  // 가장 뒤쪽 key를 저장하는 변수
+
+    // queue에 요소(item) 추가, tail위치에 넣음
+    // Map에 tail값을 키로 요소(item)를 만듦
+    queue.set(tail++, "hong");
+    console.log(queue);
+    queue.set(tail++, "john");
+    console.log(queue);
+    queue.set(tail++, "donald");
+    console.log(queue);
+    queue.set(tail++, "kim");
+    console.log(queue);
+    queue.set(tail++, "lee");
+    console.log(queue);
+
+    // queue에서 요소 꺼내기(dequeue), head위치에서 꺼내고 key 삭제
+    console.log(queue.get(head)); // 0, hong
+    queue.delete(head++); // 0, delete queue["0"]
+    console.log(queue)
+
+    console.log(queue.get(head)); // 1
+    queue.delete(head++);; // 1
+    console.log(queue)
+
+    console.log(queue.get(head)); // 2
+    queue.delete(head++); // 2
+    console.log(queue)
+
+    console.log(queue.get(head)); // 3
+    queue.delete(head++); // 3
+    console.log(queue)
+
+    console.log(queue.get(head));
+    queue.delete(head++);
+    console.log(queue)
+
+    // 큐 크기 구하기
+    console.log(queue.size);
+  </script>
+</body>
+
+</html>
