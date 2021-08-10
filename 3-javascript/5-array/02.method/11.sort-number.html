@@ -11,15 +11,18 @@
     arr.sort((a, b) => {
       // 0보다 작은 경우, a를 b보다 낮은 색인으로 정렬합니다. 즉 a가 먼저옵니다
       // 작은 값을 앞쪽에 오게함
+      // 앞에 것이 작으면 음수
       if (a < b) return -1;
       // 0을 반환하면 a와 b를 서로에 대해 변경하지 않음
       if (a == b) return 0;
       // 0보다 큰경우, b를 a보다 낮은 인덱스로 정렬. 즉 a가 뒤에옴
       // 큰 값을 뒤에 오게함
+      // 앞의 것이 크면 양수
       if (a > b) return 1;
     });
-
-
+    // 배열 내부의 요소가 숫자면
+    arr.sort((a, b))
+    let endTime = new Date().getTime();
 
     console.log(arr);  // 1, 2, 15
   </script>

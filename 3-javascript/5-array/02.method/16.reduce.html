@@ -1,0 +1,18 @@
+<html>
+
+<body>
+  <script>
+    let arr = [1, 2, 3, 4, 5];
+
+    let result = arr.reduce((sum, current) => sum + current, 0);
+
+    // for-of 스타일
+    let sum = 0;
+    for (let current of arr) {
+      sum += current
+    }
+    alert(result); // 15
+  </script>
+</body>
+
+</html>
