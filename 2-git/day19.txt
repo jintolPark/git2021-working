@@ -1,0 +1,2 @@
+요소.herf =
+요소.getAttribute("href")
