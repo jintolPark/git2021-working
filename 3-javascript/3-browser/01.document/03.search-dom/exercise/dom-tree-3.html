@@ -1,0 +1,57 @@
+<html>
+<table>
+  <tr>
+    <td>1:1</td>
+    <td>2:1</td>
+    <td>3:1</td>
+    <td>4:1</td>
+    <td>5:1</td>
+  </tr>
+  <tr>
+    <td>1:2</td>
+    <td>2:2</td>
+    <td>3:2</td>
+    <td>4:2</td>
+    <td>5:2</td>
+  </tr>
+  <tr>
+    <td>1:3</td>
+    <td>2:3</td>
+    <td>3:3</td>
+    <td>4:3</td>
+    <td>5:3</td>
+  </tr>
+  <tr>
+    <td>1:4</td>
+    <td>2:4</td>
+    <td>3:4</td>
+    <td>4:4</td>
+    <td>5:4</td>
+  </tr>
+  <tr>
+    <td>1:5</td>
+    <td>2:5</td>
+    <td>3:5</td>
+    <td>4:5</td>
+    <td>5:5</td>
+  </tr>
+</table>
+<script>
+  let table = document.body.firstElementChild;
+
+  // tbody 변수가 실행되기 전까지 table인지 tbody, div,ul인지 모름
+  const tbody = document.body.children[0].children[0];
+  console.log(tbody);
+
+  // tbody의 row(행들)에 대해서 반복문을 수행
+  for (let i = 0; i < tbody.rows.length; i++) {
+    // tbody.rows[0].cell[0].style.backgroundColor = 'red'
+    // tbody.rows[1].cell[1].style.backgroundColor = 'red'
+    // tbody.rows[2].cell[1].style.backgroundColor = 'red'
+    // ...
+    tbody.rows[i].cells[i].style.backgroundColor = 'red';
+  }
+</script>
+</body>
+
+</html>
