@@ -1,8 +1,6 @@
-<!DOCTYPE html>
 <html>
 
 <body>
-
   <a name="list">the list</a>
   <ul>
     <li><a href="http://google.com">http://google.com</a></li>
@@ -14,15 +12,20 @@
   </ul>
 
   <script>
-    const links = document.querySelectorAll('ul a');
-    console.log(links);
+    const links = document.querySelectorAll("ul a");
+    // console.log(links);
 
     for (let link of links) {
-      const href = link = link.getAttribute('href');
+      // link.href로 하면 서버 주소가 붙음
+      // getAttribute로 해야 입력된 값만 받아옴
+      const href = link.getAttribute("href");
       console.log(href);
-      if (href.includes("://") && !href.includes("http://internal.com/test"));
 
+      if (href.includes("://") && !href.includes("http://internal.com")) {
+        link.style.color = "orange";
+      }
     }
+
   </script>
 </body>
 

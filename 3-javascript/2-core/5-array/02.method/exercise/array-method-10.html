@@ -2,13 +2,24 @@
 
 <body>
   <script>
-// let john = { name: "John", age: 25 };
-// let pete = { name: "Pete", age: 30 };
-// let mary = { name: "Mary", age: 29 };
+    function getAverageAge(arr) {
+      let sum = 0;
+      for (let item of arr) {
+        sum += item.age;
+      }
 
-// let arr = [ john, pete, mary ];
+      // return sum / arr.length;
+      return Math.trunc(sum / arr.length);  // 소숫점 자르기
+      // return Math.floor(sum / arr.length);  // 내림
+      // return Math.round(sum / arr.length);  // 반올림
+    }
 
-// alert( getAverageAge(arr) ); // (25 + 30 + 29) / 3 = 28
+    let john = { name: "John", age: 25 };
+    let pete = { name: "Pete", age: 30 };
+    let mary = { name: "Mary", age: 29 };
+
+    let users = [john, pete, mary];
+    console.log(getAverageAge(users));
   </script>
 </body>
 

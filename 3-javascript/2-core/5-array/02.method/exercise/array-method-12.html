@@ -2,23 +2,38 @@
 
 <body>
   <script>
-// let users = [
-//   {id: 'john', name: "John Smith", age: 20},
-//   {id: 'ann', name: "Ann Smith", age: 24},
-//   {id: 'pete', name: "Pete Peterson", age: 31},
-// ];
+    function groupById(arr) {
+      // 빈 객체 생성
+      let result = {};
 
-// let usersById = groupById(users);
+      for (let item of arr) {
+        // { john: {id:'john' ...} }
+        // id와 같은 이름의 속성을 생성하고 값으로 객체를 넣음
+        result[item.id] = item;
+      }
 
-// /*
-// // after the call we should have:
+      return result;
+    }
 
-// usersById = {
-//   john: {id: 'john', name: "John Smith", age: 20},
-//   ann: {id: 'ann', name: "Ann Smith", age: 24},
-//   pete: {id: 'pete', name: "Pete Peterson", age: 31},
-// }
-// */
+    let users = [
+      { id: 'john', name: "John Smith", age: 20 },
+      { id: 'ann', name: "Ann Smith", age: 24 },
+      { id: 'pete', name: "Pete Peterson", age: 31 },
+    ];
+
+    let usersById = groupById(users);
+    console.log(usersById);
+
+    // 변환 후
+    // let usersObj = {
+    //   john: {id: "john", name: "John Smith", age: 20}
+    //   ann: {id: "ann", name: "Ann Smith", age: 24}
+    //   pete: {id: "pete", name: "Pete Peterson", age: 31}    
+    // }
+
+    // id가 "ann"인 데이터 찾기
+    // usersObj["ann"] == {id: "ann", name: "Ann Smith", age: 24}
+
   </script>
 </body>
 

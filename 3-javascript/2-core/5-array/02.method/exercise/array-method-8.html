@@ -2,18 +2,23 @@
 
 <body>
   <script>
-// let john = { name: "John", age: 25 };
-// let pete = { name: "Pete", age: 30 };
-// let mary = { name: "Mary", age: 28 };
+    function sortByAge(users) {
+      arr.sort((a, b) => a.age - b.age)
+    }
 
-// let arr = [ pete, john, mary ];
+    let john = { name: "John", age: 25 };
+    let pete = { name: "Pete", age: 30 };
+    let mary = { name: "Iary", age: 28 };
 
-// sortByAge(arr);
+    let arr = [pete, john, mary];
 
-// // now: [john, mary, pete]
-// alert(arr[0].name); // John
-// alert(arr[1].name); // Mary
-// alert(arr[2].name); // Pete
+    sortByAge(arr);
+    console.log(arr);
+
+    // now: [john, mary, pete]
+    console.log(arr[0].name); // John
+    console.log(arr[1].name); // Mary
+    console.log(arr[2].name); // Pete
   </script>
 </body>
 

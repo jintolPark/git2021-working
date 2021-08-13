@@ -2,15 +2,34 @@
 
 <body>
   <script>
-    function compaer(a, b) {
-      if (a > b) return 1;
-      if (a == b) return 0;
-      if (a < b) return -1;
+    function filterRangeInPlace(arrParm, a, b) {
+
+      // 매개변수의 참조를 변경시키는 것은 안 되는 상황
+      // arrParm = arr.filter(item => item >= a && item <= b);
+      // console.log("--in function--")
+      // console.log(arrParm);
+
+      // 사이에 포함되지 않는 숫자들만 필터링
+      let result = arrParm.filter(item => item < a || item > b);
+      // console.log(result);
+
+      // 포함되지 않는 숫자들을 반복
+      for (let item of result) {
+        // 입력받은 배열에서 해당 숫자가 있으면
+        if (arrParm.includes(item)) {
+          // 입력 받은 배열에서 해당 숫자를 제거
+          arrParm.splice(arrParm.indexOf(item), 1);
+        }
+      }
+
+      console.log("--in function--")
+      console.log(arrParm);
     }
-    let arr = [5, 2, 1, -10, 8];
-    arr.sort(compaer);
-    arr.reverse();
-    alert(arr);
+
+    let arr = [5, 3, 8, 1];
+    filterRangeInPlace(arr, 1, 4);
+    console.log("--out function--")
+    console.log(arr);
   </script>
 </body>
 
