@@ -13,7 +13,7 @@
   <title>연락처</title>
 </head>
 
-<body style="width: 700px;" class="mx-auto">
+<body style="width: 500px;" class="mx-auto">
   <h2 class="text-center my-5">연락처</h2>
 
   <!-- Optional JavaScript; choose one of the two! -->
@@ -23,23 +23,87 @@
     integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
     crossorigin="anonymous"></script>
 
-  <form id="form-input" class="d-flex" onsubmit="return flase">
+  <form id="form-input" class="d-flex" onsubmit="return false">
     <div class="form-floating mb-3 ms-2" style="width: 100px;">
-      <input type="userName" class="form-control" id="floatingInput" placeholder="name">
-      <label style="color: grey;" for="floatingInput">홍길동</label>
+      <input type="text" class="form-control" id="txt-contact" placeholder="name">
+      <label style="color: grey;" for="txt-contact">홍길동</label>
     </div>
-    <div class="form-floating mb-3 ms-2" style="width: 250px;">
-      <input type="ph-num" class="form-control" id="floatingInput" placeholder="phonenumber">
-      <label style="color: grey;" for="floatingInput">010-1234-5678</label>
+    <div class="form-floating mb-3 ms-2" style="width: 200px;">
+      <input type="text" class="form-control" id="txt-contact" placeholder="phonenumber">
+      <label style="color: grey;" for="txt-contact">010-1234-5678</label>
     </div>
-    <div class="form-floating mb-3 ms-2" style="width: 250px;">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label style="color: grey;" for="floatingInput">name@example.com</label>
+    <div class="form-floating mb-3 ms-2" style="width: 200px;">
+      <input type="email" class="form-control" id="txt-contact" placeholder="name@example.com">
+      <label style="color: grey;" for="txt-contact">ex@example.com</label>
     </div>
-    <button style="height: 60px;" id="txt-memo" type="button" class="btn btn-primary text-nowrap ms-3">추가</button>
+    <button style="height: 60px;" id="btn-add" type="button" class="btn btn-primary text-nowrap ms-2">추가</button>
   </form>
+  <table class="table table-striped mt3">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">이름</th>
+        <th scope="col">전화번호</th>
+        <th scope="col">이메일</th>
+        <th id="delete-run" scope="col">작업</th>
+      </tr>
+    <tbody id="table-list" class="table table-striped mt3"></tbody>
+    </thead>
+  </table>
 
+  <script>
+    const txtContact = document.querySelector("#txt-contact");
+    const deleteRun = document.querySelector("#delete-run");
+    const tableList = document.querySelector("#table-list");
+    const btnAdd = document.querySelector("#btn-add");
+    const formInput = document.querySelector("#form-input");
 
+    txtContact.addEventListener("keyup", (event) => {
+      if (event.keyCode == 13) {
+        txtContact.blur();
+        add(event);
+      }
+    });
+
+    btnAdd.addEventListener("click", add);
+
+    tableList.addEventListener("click", remove);
+
+    function add(event) {
+      console.log(txtContact.value);
+      if (!txtContact.value) {
+        const alertDiv = /*html*/`
+        <div class = "alert alert-danger alert-dismissible my-2" role="alert" id="liveAlert">
+        입력값을 입력해주세요.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+       `;
+        formInput.insertAdjacentHTML("afterend", alertDiv);
+
+        return;
+      }
+
+      const tr = /*html*/`
+      <tr class="list-group-item">
+        <button class="btn-outline-secondary btn-sm remove">삭제</button>
+        ${deleteRun.value}
+      </tr>
+      `;
+      tableList.insertAdjacentHTML("afterbegin", tr);
+
+      formInput.reset();
+    }
+
+    function remove(event) {
+
+      if (event.target.className.includes("remove")) {
+        const btnRemove = event.target;
+        const tr = btnRemove.parentNode;
+        tr.remove();
+      }
+    }
+
+  </script>
 </body>
 
 </html>
