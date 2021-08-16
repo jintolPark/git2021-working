@@ -25,16 +25,16 @@
 
   <form id="form-input" class="d-flex" onsubmit="return false">
     <div class="form-floating mb-3 ms-2" style="width: 100px;">
-      <input type="text" class="form-control" id="txt-contact" placeholder="name">
-      <label style="color: grey;" for="txt-contact">홍길동</label>
+      <input type="text" class="form-control" id="txt-name" placeholder="name">
+      <label style="color: grey;" for="txt-name">홍길동</label>
     </div>
     <div class="form-floating mb-3 ms-2" style="width: 200px;">
-      <input type="text" class="form-control" id="txt-contact" placeholder="phonenumber">
-      <label style="color: grey;" for="txt-contact">010-1234-5678</label>
+      <input type="text" class="form-control" id="txt-phonenum" placeholder="phonenumber">
+      <label style="color: grey;" for="txt-phonenum">010-1234-5678</label>
     </div>
     <div class="form-floating mb-3 ms-2" style="width: 200px;">
-      <input type="email" class="form-control" id="txt-contact" placeholder="name@example.com">
-      <label style="color: grey;" for="txt-contact">ex@example.com</label>
+      <input type="email" class="form-control" id="txt-email" placeholder="name@example.com">
+      <label style="color: grey;" for="txt-email">ex@example.com</label>
     </div>
     <button style="height: 60px;" id="btn-add" type="button" class="btn btn-primary text-nowrap ms-2">추가</button>
   </form>
@@ -45,22 +45,37 @@
         <th scope="col">이름</th>
         <th scope="col">전화번호</th>
         <th scope="col">이메일</th>
-        <th id="delete-run" scope="col">작업</th>
+        <th scope="col">작업</th>
       </tr>
-    <tbody id="table-list" class="table table-striped mt3"></tbody>
     </thead>
+    <tbody id="table-list"></tbody>
   </table>
 
   <script>
-    const txtContact = document.querySelector("#txt-contact");
-    const deleteRun = document.querySelector("#delete-run");
+    const txtName = document.querySelector("#txt-name");
+    const txtPhonenum = document.querySelector("#txt-phonenum");
+    const txtEmail = document.querySelector("#txt-email");
     const tableList = document.querySelector("#table-list");
     const btnAdd = document.querySelector("#btn-add");
     const formInput = document.querySelector("#form-input");
 
-    txtContact.addEventListener("keyup", (event) => {
+    txtName.addEventListener("keyup", (event) => {
       if (event.keyCode == 13) {
-        txtContact.blur();
+        txtName.blur();
+        add(event);
+      }
+    });
+
+    txtPhonenum.addEventListener("keyup", (event) => {
+      if (event.keyCode == 13) {
+        txtPhonenum.blur();
+        add(event);
+      }
+    });
+
+    txtEmail.addEventListener("keyup", (event) => {
+      if (event.keyCode == 13) {
+        txtEmail.blur();
         add(event);
       }
     });
@@ -70,8 +85,8 @@
     tableList.addEventListener("click", remove);
 
     function add(event) {
-      console.log(txtContact.value);
-      if (!txtContact.value) {
+      console.log(txtName.value || txtPhonenum.value || txtEmail.value);
+      if (!txtName.value || !txtPhonenum.value || !txtEmail.value) {
         const alertDiv = /*html*/`
         <div class = "alert alert-danger alert-dismissible my-2" role="alert" id="liveAlert">
         입력값을 입력해주세요.
@@ -83,26 +98,27 @@
         return;
       }
 
-      const tr = /*html*/`
-      <tr class="list-group-item">
-        <button class="btn-outline-secondary btn-sm remove">삭제</button>
-        ${deleteRun.value}
-      </tr>
+      const table = /*html*/`  
+      <tr class="table table-striped">
+      <th scope="row">${-19 + txtName.size++}</th>
+        <td> ${txtName.value}</td>
+      <td>${txtPhonenum.value}</td>
+      <td>${txtEmail.value}</td>
+      <td><button class="btn btn-outline-secondary btn-sm remove" >삭제</button></td>
+      </tr >
       `;
-      tableList.insertAdjacentHTML("afterbegin", tr);
-
+      tableList.insertAdjacentHTML("afterbegin", table);
       formInput.reset();
     }
 
     function remove(event) {
-
       if (event.target.className.includes("remove")) {
         const btnRemove = event.target;
-        const tr = btnRemove.parentNode;
-        tr.remove();
+        const table = btnRemove.parentNode.parentNode;
+        table.remove();
+        txtName.size-- - 19
       }
     }
-
   </script>
 </body>
 
