@@ -59,6 +59,7 @@
     const tableList = document.querySelector("#table-list");
     const btnAdd = document.querySelector("#btn-add");
     const formInput = document.querySelector("#form-input");
+    const storageKye = "memo";
 
     txtName.addEventListener("keyup", (event) => {
       if (event.keyCode == 13) {
@@ -100,9 +101,9 @@
       }
 
       const tr = /*html*/`  
-      <tr class="table table-striped">
+      <tr class="table table-striped" data-id="txt-memo">
       <th scope="row">${-19 + txtName.size++}</th>
-        <td> ${txtName.value}</td>
+      <td>${txtName.value}</td>
       <td>${txtPhonenum.value}</td>
       <td>${txtEmail.value}</td>
       <td><button class="btn btn-outline-secondary btn-sm remove" >삭제</button></td>
@@ -120,6 +121,20 @@
         txtName.size-- - 19
       }
     }
+
+    txtName.addEventListener("keyup", () => {
+      localStorage.setItem("memo", txtName.value);
+    });
+    txtPhonenum.addEventListener("keyup", () => {
+      localStorage.setItem("memo", txtPhonenum.value);
+    });
+    txtEmail.addEventListener("keyup", () => {
+      localStorage.setItem("memo", txtEmail.value);
+    });
+
+    txtName.value = localStorage.getItem(storageKye);
+    txtPhonenum.value = localStorage.getItem(storageKye);
+    txtEmail.value = localStorage.getItem(storageKye);
   </script>
 </body>
 

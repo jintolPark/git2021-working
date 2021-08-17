@@ -1,0 +1,28 @@
+<html>
+
+<body>
+  <textarea style="height: 100px; width: 300px;" placeholder="Write here">
+
+    </textarea>
+
+  <br>
+  <button onclick="localStorage.removeItem('txt'); txt.value=''">clear</button>
+  <script>
+    const txt = document.querySelector("textarea");
+    const btn = document.querySelector("button");
+    const storageKye = "memo";
+
+    txt.addEventListener("keyup", () => {
+      localStorage.setItem("memo", txt.value);
+    });
+
+    btn.addEventListener("click", () => {
+      txt.value = "";
+      localStorage.removeItem(storageKye)
+    })
+    txt.value = localStorage.getItem(storageKye);
+  </script>
+
+</body>
+
+</html>

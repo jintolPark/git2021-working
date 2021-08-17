@@ -1,0 +1,72 @@
+1. add 할 때 localStorage 데이터를 추가
+    - localStorage에서 가져온후 추가
+    - getItem, setItem
+    - id는 가장 마지막에 추가한 데이터의 id + 1
+    - tr태그에 id를 데이터 속성으로
+    -> data-속성, <tr data-id="1" ....
+2. remove 할때 lcalStorage에서 특정 데이터를 삭제
+     - localStorage에서 가져온후 삭제
+     - setItem
+     - filter
+     -> item.id != tr.dataset.id
+3. 페이지 로딩할때 localStorage에서 데이터 가져오기
+     -localStorage에서 가져온 후 배열을 tr 목록으로
+     - getItem
+     -map, join
+
+
+필기 
+1. 단답형 
+material design
+
+2.선택형
+접근성 (Accessbility, Robust)
+          - 시맨틱 태그
+          - alt 속성
+3. Cross Browsing(크로스 브라우징)
+4. 이모지(emoji)
+5. 시맨틱 태그
+6. 웹개발 환경에 적합 개발도구가 아닌것 -> MySQL Workbench
+7. Extensions
+8. Jest
+:자동화 테스트
+-> 테스트코드 -> 구현코드
+: JUnit - 자바 
+: ZAP - 웹 보안성 테스트 
+: JMeter - 성능 테스트 (웹, 백엔드)
+9. table 태그 작성
+table, thead, th, tbody, tr, rd,border
+
+10. 이벤트 처리
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
