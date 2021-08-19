@@ -96,6 +96,12 @@ npm run build
 
 
 
+.typescript
+.create-react-
+
+
+
+
 
 
 

@@ -6,12 +6,19 @@
 interface User {
   firstname: string;
   lastname?: string;  // 속성명?, optional(필수값이 아닌) 속성
+  phone?: string;
 };
 
 function printName(obj: User) {
-  console.log(obj.firstname + " " + obj.lastname);
-};
+  // 삭제한 속성 반복문에서 안나옴
+  Object.keys(obj).forEach((key) => {
+    console.log(key);
+  });
 
+  for (let prop in obj) {
+    console.log(prop)
+  }
+}
 // 타입명[]
 // number[], string[], User[]
 function printNames(arr: User[]) {
@@ -25,6 +32,11 @@ const user: User = {
   firstname: "John",
   // lastname: "Smith",
 };
+
+// delete user.lastname;
+
+// 속성추가 불가
+// user.phone = "01012345678"
 
 const users: User[] = [
   { firstname: "John", lastname: "Smith" },
