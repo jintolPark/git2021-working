@@ -13,9 +13,9 @@ import { useState } from "react";
 // Virtual DOM 요소와 관련된
 // state 또는 prop를 조작
 
-const ListItem = ({ key, num }: { key: number, num: number }) => {
+const ListItem = ({ num }: { num: number }) => {
   const color = num < 0 ? "red" : "green";
-  return <li key={key} style={{ color: color }}>{num}</li>
+  return <li style={{ color: color }}>{num}</li>
 }
 
 const Generator = () => {
@@ -66,6 +66,7 @@ const Generator = () => {
       <button onClick={() => { generator(); }} >GENERATOR</button>
       <div>{numbers}</div>
       {/* JSX Element 내부에서는 중괄호로 코드를 침 */}
+
       <ul>
         {
           // JSX 내부에서는 한줄까리 코그 (식, expression)만 가능함.

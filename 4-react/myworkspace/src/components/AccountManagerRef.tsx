@@ -1,6 +1,6 @@
 // 계좌관리
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 // 버튼:입금버튼, 출금버튼
 // 버튼클릭시에 입금금액 또는 출금금액을 입력받을수 있음.
@@ -16,9 +16,10 @@ const ListItem = ({ money }: { money: number }) => {
 const AccountManager = () => {
 
   const [result, setResult] = useState<number[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
   const trnsact = (mod: "deposit" | "withdraw") => {
     const msg = mod === "deposit" ? "입금 금액" : "출금 금액";
-    const input = prompt(`${msg}을 입력해주세요`);
+    const input = inputRef.current?.value
 
     let money = 0;
     if (input) {
@@ -52,6 +53,7 @@ const AccountManager = () => {
 
   return (<div>
     <h2>Account Manager</h2>
+    <input type="text" ref={inputRef} />
     <button onClick={() => { trnsact("deposit"); }} >입금</button>
     <button onClick={() => { trnsact("withdraw"); }}>출금</button>
     {result.length > 0 &&

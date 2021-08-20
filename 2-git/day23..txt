@@ -1,0 +1,40 @@
+Stateful Component
+ - 상태관리 필요한 컴포넌트
+ - 내부에 state로 특정 시점에 다시 렌더링
+ - class component로작성
+
+Stateless Component
+ - 상태관리 필요하지 않은 컴포넌트 
+ - props만 받아서 렌더링 하는것
+ - function component로 작성
+ - 상태관리, 라이프 사이클 처리
+      -> React Hook 16.8에 되게 만듦
+
+React 컴포넌트 라이브러리
+컴포넌트는 JSX 를 반환하는 함수
+prop: 컴포넌트에서 받는 매개변수 매개변수 렌더링에 변화
+<...prop1={var1}
+state: 컴포넌트 내부에서 관리하는 변수 렌더링에 변화
+   -> state 변경함수로 제어가 가능함
+
+React 컴포넌트가 재렌더링 되는 케이스
+   - state가 변경됐을 때
+   - props 변경됐을 때
+   - 부모 컴포넌트가 다시 렌더링 될때
+      App > Generator > ListItem
+               state 변경
+                 -> re-render ->
+   - key 속성이 변경 됐을때
+     prop, state 그대로인데 다시 렌더링만 해야함
+      -> key 속성의 값을 바꿔야함
+         -> 1개짜리 컴포넌트는 상관없으나 
+              반복문으로 표현되는 컴포넌트에는 key가 필요함
+
+
+
+-----------------------------------------------------------------------------------
+// 이게 적용이됨
+$green: rgb(0, 255, 0)
+
+green: #198754 !default;
+
