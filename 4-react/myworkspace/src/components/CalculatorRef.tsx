@@ -1,45 +1,26 @@
 // Calculator 컴포넌트
 
-import { useState } from "react";
-
-// 1. prompt로 입력값을 두번 받음
-// a = propmpt, b = prompt
-
-// 2. 연산자를 prompt로 받음
-// +, -, *, /
-
-// 3. 입력값 두개에 대한 연산 결과를 화면 출력
-// state를 사용해야함
-
-// 예) 입력값1: 10
-//     입력값2: 5
-//     연산자: *
-//     결과값: 50
-//     <div>50</div>
+import { useRef, useState } from "react";
 
 
 const Calculator = () => {
   const [result, setResult] = useState(0);
+  const inputRef1 = useRef<HTMLInputElement>(null);
+  const inputRef2 = useRef<HTMLInputElement>(null);
+  const inputRef3 = useRef<HTMLInputElement>(null);
   const calculate = () => {
-    const a = prompt("첫번째 숫자");
-    const b = prompt("두번째 숫자");
-    const op = prompt("연산자, (+, -, *, /)");
+    const a = inputRef1.current?.value
+    const b = inputRef2.current?.value
+    const op = inputRef3.current?.value
 
-    console.log(`${a}${op}${b}`);
-
-    // eval(문자열) 
-    // 무자열이 자바스크립트코드로 실행할 수 있으면 실행
-    // const code = `alert(${a}${op}${b})`
-    // eval(code);
     setResult(eval(`${a}${op}${b}`))
-
-    // state 값에 변동이 없으면 컴포넌트를 업데이트하지 않음
-    // 기존 result == 20
-    // 변동 result == 20, 컴포넌트를 업데이트 하지않음
   }
   return (
     <div>
       <h2 >Claculator</h2>
+      <input type="text" ref={inputRef1} placeholder="첫번째 숫자" />
+      <input type="text" ref={inputRef2} placeholder="두번째 숫자" />
+      <input type="text" ref={inputRef3} placeholder="(+, -, *, /)" />
       <button onClick={() => { calculate(); }} >Start</button>
       <div>{result}</div>
     </div >

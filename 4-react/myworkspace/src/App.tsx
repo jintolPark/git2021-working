@@ -19,7 +19,7 @@ import Navigation from "./Navigation";
 // Lazy-Loading 처리
 // 컴포넌트를 방문하는 시점에 로딩함
 const Counter = lazy(() => import("./components/Counter"));
-const Calculator = lazy(() => import("./components/Calculator"));
+const Calculator = lazy(() => import("./components/CalculatorRef"));
 const Generator = lazy(() => import("./components/Generator"));
 const AccountManager = lazy(() => import("./components/AccountManagerRef"));
 const Components = lazy(() => import("./components/Components"));
