@@ -14,7 +14,13 @@ const Navigation = () => {
         <br></br>
         <button className="btn btn-outline-info" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><Link to="/generator">Generator</Link></button>
         <br></br>
+        <button className="btn btn-outline-info" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><Link to="/account-Manager">AccountManager</Link></button>
+        <br></br>
         <button className="btn btn-outline-info" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><Link to="/bootstrap">BootStrap</Link></button>
+        <br></br>
+        <button className="btn btn-outline-info" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><Link to="/todo">Todo</Link></button>
+        <br></br>
+        <button className="btn btn-outline-info" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><Link to="/feeds">Feeds</Link></button>
       </div>
     </div>
   )
