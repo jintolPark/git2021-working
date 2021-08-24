@@ -18,9 +18,8 @@ import Home from "./components/Home";
 
 // Lazy-Loading 처리
 // 컴포넌트를 방문하는 시점에 로딩함
-const Todo = lazy(() => import("./components/Todo"));
+const Todo = lazy(() => import("./components/TodoWoMod"));
 const Feed = lazy(() => import("./components/Feed"));
-const Todoc = lazy(() => import("./components/Todo copy"));
 
 // React == 컴포넌트 개발 라이브러리
 function App() {
@@ -42,9 +41,6 @@ function App() {
             <li>
               <Link to="/feeds">Feeds</Link>
             </li>
-            <li>
-              <Link to="/todoc">Todoc</Link>
-            </li>
           </ul>
         </nav>
         <main style={{ marginLeft: "200px", marginTop: "20px" }}>
@@ -58,8 +54,6 @@ function App() {
               <Route path="/" component={Home} exact />
               <Route path="/todo" component={Todo} />
               <Route path="/feeds" component={Feed} />
-              <Route path="/todoc" component={Todoc} />
-
             </Switch>
           </Suspense>
         </main>
