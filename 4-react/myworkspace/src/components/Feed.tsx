@@ -20,23 +20,24 @@ const Feed = () => {
 
   const textRef = useRef<HTMLTextAreaElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
 
   const add = () => {
 
+    const feed: FeedState = {
+      id: feedList.length > 0 ? feedList[0].id + 1 : 1,
+      memo: textRef.current?.value,
+      createTime: new Date().getTime(),
+    };
+    setFeedList(
+      produce((state) => {
+        state.unshift(feed);
+      })
+    );
 
+    formRef.current?.reset();
   }
-  const feed: FeedState = {
-    id: feedList.length > 0 ? feedList[0].id + 1 : 1,
-    memo: textRef.current?.value,
-    createTime: new Date().getTime(),
-  };
-  setFeedList(
-    produce((state) => {
-      state.unshift(feed);
-    })
-  );
-  formRef.current?.reset();
   const del = (id: number, index: number) => {
     console.log(id);
     setFeedList(
@@ -67,6 +68,7 @@ const Feed = () => {
             type="file"
             className="form-control me-1"
             accept="image/png, image/jpeg, video/mp4"
+            ref={inputRef}
           />
           <button className="btn btn-primary text-nowrap" type="button"
             onClick={() => {
