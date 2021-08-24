@@ -37,7 +37,7 @@ const Feed = () => {
     );
 
     formRef.current?.reset();
-  }
+  };
   const del = (id: number, index: number) => {
     console.log(id);
     setFeedList(
@@ -82,9 +82,9 @@ const Feed = () => {
       <div className="card" ref={divRef} >
         {feedList.map((item, index) => (
           // <img /*src={dataUrl}*/ className="card-img-top" alt="...">
-          <div className="card-body">
+          <div className="card-body" key={item.id}>
             <h5 className="card-title">Card title</h5>
-            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p className="card-text">{item.memo}</p>
             <span style={{ fontSize: "0.75rem" }}>
               - {getTimeString(item.createTime)}
             </span>
