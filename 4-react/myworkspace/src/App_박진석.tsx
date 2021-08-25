@@ -18,8 +18,8 @@ import Home from "./components/Home";
 
 // Lazy-Loading 처리
 // 컴포넌트를 방문하는 시점에 로딩함
-const Todo = lazy(() => import("./components/TodoWithModal"));
-const Feed = lazy(() => import("./components/Feed"));
+const Todo = lazy(() => import("./components/TodoWoMod"));
+const Feed = lazy(() => import("./components/Feed_박진석"));
 
 // React == 컴포넌트 개발 라이브러리
 function App() {
