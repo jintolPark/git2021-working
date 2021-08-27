@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Prop } from "./type"
 
 interface ModalProp {
@@ -11,12 +11,24 @@ const FeedEditModal = ({item, onClose, onSave }: ModalProp) => {
 
   const inputRef = useRef<HTMLInputElement>(null);
   const textRef = useRef<HTMLTextAreaElement>(null);
+  const [url, setUrl] = useState(item.dataUrl)
 
-  const save =() =>{
+  const change = () => {
+  if (inputRef.current?.files?.length) {
+    const file = inputRef.current?.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      const baseUrl = reader.result?.toString();
+    };
+  };
+};
+  const save =(Url: string | undefined) =>{
     const feed: Prop ={
       id: item.id,
       content: textRef.current?.value, // 수정된 입력값
-      dataUrl: inputRef.current?.value, // 수정된 입력값
+      dataUrl: Url,
       createTime: item.createTime,
     }
     onSave(feed)
@@ -45,13 +57,13 @@ const FeedEditModal = ({item, onClose, onSave }: ModalProp) => {
             {item.fileType &&
               (item.fileType?.includes("image") ? (
                 <img
-                  src={item.dataUrl}
+                  src={url}
                   className="card-img-top"
                   alt={item.content}
                 />
               ) : (
                 <video className="card-img-top" controls>
-                  <source src={item.dataUrl} type="video/mp4"></source>
+                  <source src={url} type="video/mp4"></source>
                 </video>
               ))}
             <textarea
@@ -65,7 +77,10 @@ const FeedEditModal = ({item, onClose, onSave }: ModalProp) => {
               type="file"
               className="form-control me-1"
               accept="image/png, image/jpeg, video/mp4"
-              
+              onChange = {(e) => {
+                e.preventDefault();
+                change();
+              }}
               ref={inputRef}
               />
             </div>
@@ -80,7 +95,7 @@ const FeedEditModal = ({item, onClose, onSave }: ModalProp) => {
               <button type="button" 
               className="btn btn-primary"
               onClick={()=>{
-                save();
+                save(url);
               }}
               >저장</button>
             </div>

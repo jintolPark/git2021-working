@@ -81,14 +81,14 @@ const save = (editItem: Prop) => {
       const item = state.find((item)=> item.id === editItem.id);
       if(item) {
         item.content = editItem.content;
-        item.dataUrl = editItem.content;
+        item.dataUrl = editItem.dataUrl;
       }
     })
   )
   setIsEdit(false)
 };
   return (
-    <>
+    <div style={{width: "40vw"}} className="mx-auto">
       <h2 className="text-center my-5">Feeds</h2>
       {isEdit && (
         <FeedEditModal 
@@ -181,7 +181,7 @@ const save = (editItem: Prop) => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
