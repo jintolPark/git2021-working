@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { penguin } from "../../common/data";
+import { bori } from "../../common/data";
 
 // 모듈명(컴포넌트명).module.scss
 // 해당 컴포넌트에서만 사용할 스타일시트
@@ -13,7 +13,7 @@ interface ProfileState {
 
 const Profile = () => {
   const [profile, setProfile] = useState<ProfileState>({
-    image: penguin,
+    image: bori,
     username: "Jinseok Park",
   });
 
