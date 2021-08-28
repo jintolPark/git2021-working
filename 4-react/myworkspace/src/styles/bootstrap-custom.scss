@@ -1,4 +1,4 @@
-@import "~bootstrap/scss/bootstrap";
+// @import "~bootstrap/scss/bootstrap.scss"
 
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "~bootstrap/scss/functions";
@@ -17,6 +17,8 @@ $light: #f8f9fa;
 $dark: #212529;
 
 $border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
 // $btn-border-radius: 0;
 // $btn-border-radius-sm: 0;
 // $btn-border-radius-lg: 0;
@@ -38,7 +40,7 @@ $border-radius: 0;
 @import "~bootstrap/scss/alert";
 @import "~bootstrap/scss/close";
 @import "~bootstrap/scss/modal";
-@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/dropdown";
 /* ---------------------------------------------- */
 @import "~bootstrap/scss/helpers";
 
