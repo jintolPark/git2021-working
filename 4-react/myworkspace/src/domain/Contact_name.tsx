@@ -84,7 +84,7 @@ setContactList(
 );
 };
 return (
-  <>
+  <div style={{ width: "40vw" }} className="mx-auto">
         <h2 className="text-center my-5">연락처</h2>
       <form
         className="d-flex"
@@ -153,7 +153,7 @@ return (
     {contactList.map((item, index)=>
     
      <tr key={item.id}>
-    <th scope="row">{item.id}</th>
+    <td scope="row">{item.id}</td>
     <td>
     {!item.isEdit && <td>{item.contact1}</td>}
     {item.isEdit &&(
@@ -215,7 +215,7 @@ return (
   </tbody>
 </table>
 </form>
-  </>
+  </div>
 )
 
 }

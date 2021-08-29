@@ -1,3 +1,4 @@
+
 // https://react.vlpt.us/styling/02-css-module.html
 // css module
 // 파일명.module.css
@@ -8,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
 import Home from "./domain/Home";
+
 import Profile from "./domain/profile/Profile";
 
 // SPA(Single Page Application)
@@ -20,7 +22,7 @@ import Profile from "./domain/profile/Profile";
 // 컴포넌트를 방문하는 시점에 로딩함
 const Todo = lazy(() => import("./domain/todo/Todo"));
 const Feed = lazy(() => import("./domain/feed/Feed"));
-// const Photo = lazy(() => import("./domain/Photo"));
+const Contact = lazy(() => import("./domain/Contact_박진석"));
 
 // React == 컴포넌트 개발 라이브러리
 function App() {
@@ -29,10 +31,12 @@ function App() {
       {/* main container */}
       <div className="mx-auto">
         <header className="app-bar d-flex justify-content-end bg-primary shadow">
-          <Profile />
+        <Profile/>
         </header>
-        <nav className="drawer-menu position-fixed bg-light shadow-sm">
-          <h3 className="ms-2">MY WORKSPACE</h3>
+       
+        <nav
+          className="drawer-menu position-fixed bg-light shadow-sm"
+        >
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -43,9 +47,9 @@ function App() {
             <li>
               <Link to="/feeds">Feeds</Link>
             </li>
-            {/* <li>
-              <Link to="/photos">Photos</Link>
-            </li> */}
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
           </ul>
         </nav>
         <main className="content-container">
@@ -59,7 +63,7 @@ function App() {
               <Route path="/" component={Home} exact />
               <Route path="/todo" component={Todo} />
               <Route path="/feeds" component={Feed} />
-              {/* <Route path="/photos" component={Photo} /> */}
+              <Route path="/contact" component={Contact} />
             </Switch>
           </Suspense>
         </main>

@@ -21,6 +21,7 @@ const FeedEditModal = ({item, onClose, onSave }: ModalProp) => {
 
     reader.onload = () => {
       const baseUrl = reader.result?.toString();
+      setUrl(baseUrl);
     };
   };
 };

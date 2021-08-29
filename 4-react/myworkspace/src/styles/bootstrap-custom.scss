@@ -1,4 +1,4 @@
-// @import "~bootstrap/scss/bootstrap.scss"
+@import "~bootstrap/scss/bootstrap.scss";
 
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "~bootstrap/scss/functions";
@@ -41,6 +41,7 @@ $border-radius-sm: 0;
 @import "~bootstrap/scss/close";
 @import "~bootstrap/scss/modal";
 @import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/tables";
 /* ---------------------------------------------- */
 @import "~bootstrap/scss/helpers";
 
