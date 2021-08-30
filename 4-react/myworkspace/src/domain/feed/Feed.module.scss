@@ -1,0 +1,19 @@
+@import "../../styles/app-variables.scss";
+
+$thumb-size: 40px;
+$feed-header-height: 54px;
+
+.thumb {
+  width: $thumb-size;
+  height: $thumb-size;
+
+  margin-top: calc((#{$feed-header-height} - #{$thumb-size}) / 2);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.username {
+  line-height: $feed-header-height;
+}

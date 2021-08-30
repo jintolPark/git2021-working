@@ -1,5 +1,7 @@
+
 import { useRef, useState } from "react";
 import { Prop } from "./type"
+import style from "./Feed.module.scss";
 
 interface ModalProp {
   item: Prop;
@@ -29,6 +31,8 @@ const FeedEditModal = ({item, onClose, onSave }: ModalProp) => {
     const feed: Prop ={
       id: item.id,
       content: textRef.current?.value, // 수정된 입력값
+      image: item.image,
+      username: item.username,
       dataUrl: Url,
       createTime: item.createTime,
     }
@@ -55,6 +59,12 @@ const FeedEditModal = ({item, onClose, onSave }: ModalProp) => {
               ></button>
             </div>
             <div className="modal-body" key={item.id}>
+            <div className="d-flex">
+               <div className= {`card-header ${style.thumb} me-1 `}
+               style={{ backgroundImage: `url(${item.image})` }}>
+  </div>
+  <span>{item.username}</span>
+  </div>
             {item.fileType &&
               (item.fileType?.includes("image") ? (
                 <img

@@ -4,6 +4,12 @@ import { useRef, useState } from "react";
 
 import FeedEditModal from "./FeedEditModal";
 import { Prop } from "./type"
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+// import { bori } from "../../common/data/index"
+
+import style from "./Feed.module.scss";
+// import { bori } from "../../common/data";
 
 // import { lorem, penguin, robot } from "../common/data";
 // import { getTimeString } from "../common/lib/string";
@@ -11,16 +17,20 @@ import { Prop } from "./type"
 
 
 const getTimeString = (unixtime: number) => {
-  // Locale: timezone, currency 등
-  // js에서는 브라우저의 정보를 이용함
+
+  const day = 24 * 60 * 60 * 1000;
+
   const dateTime = new Date(unixtime);
-  return `${dateTime.toLocaleDateString()} ${dateTime.toLocaleTimeString()}`;
+
+  return unixtime - new Date().getTime() >= day
+    ? dateTime.toLocaleDateString()
+    : dateTime.toLocaleTimeString();
 };
 
 const Feed = () => {
-  const [feedList, setFeedList] = useState<Prop[]>([
-    { id: 2, content: "Typescript", dataUrl: "src=image" ,createTime: new Date().getTime() },
-  ]);
+
+  const profile = useSelector((state: RootState) => state.profile);
+  const [feedList, setFeedList] = useState<Prop[]>([]);
 
   const [isEdit, setIsEdit] = useState(false)
 
@@ -50,8 +60,10 @@ const Feed = () => {
     const feed: Prop = {
       id: feedList.length > 0 ? feedList[0].id + 1 : 1,
       // optional chaning
+      image: profile.image,
       content: textRef.current?.value,
       dataUrl: dataUrl,
+      username: profile.username,
       fileType: fileType,
       createTime: new Date().getTime(),
     };
@@ -68,7 +80,7 @@ const Feed = () => {
     }));
   };
 
-  const editItem = useRef<Prop>({id:0, content: "", createTime:0, dataUrl: "" });
+  const editItem = useRef<Prop>({id:0, content: "", image: profile.image ,username: profile.username ,createTime:0, dataUrl: "" });
 const edit = (item: Prop)=> {
   editItem.current = item;
   setIsEdit(true)
@@ -82,6 +94,8 @@ const save = (editItem: Prop) => {
       if(item) {
         item.content = editItem.content;
         item.dataUrl = editItem.dataUrl;
+        item.image = editItem.image;
+        item.username = editItem.username;
       }
     })
   )
@@ -135,6 +149,13 @@ const save = (editItem: Prop) => {
       <div className="mt-3">
         {feedList.map((item, index) => (
           <div className="card mt-1" key={item.id}>
+            <div className="d-flex card-header">
+               <div className= {`${style.thumb} me-1 `}
+               style={{ backgroundImage: `url(${item.image})` }}
+               >
+  </div>
+  <span className={`${style.username}`}>{item.username}</span>
+  </div>
             {item.fileType &&
               (item.fileType?.includes("image") ? (
                 <img

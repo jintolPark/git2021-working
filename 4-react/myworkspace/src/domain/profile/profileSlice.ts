@@ -26,6 +26,9 @@ export const profileSlice = createSlice({
   reducers: {
     saveProfile: (state, action: PayloadAction<ProfileState>) => {
 // immer 가 내장 되어있음 따라서 state 변수를 직접 제어함
+console.log(action.type)
+console.log(action.payload)
+
 const profile = action.payload;
 state.image = profile.image;
 state.username = profile.username;
@@ -34,6 +37,13 @@ state.username = profile.username;
 });
 // action creator 내보내기 -> 컴포넌트에서 사용하기 위함
 // reducer 함수명에 맞는 action creator들을 createSlice할때 자동으로 생성함
+
+// action = {type: "...", payload: {...}}
+// action.type: 처리할 액션의 종류를 나타내는 문자열
+// action.patload: 처리 할 데이터
+
+// action creator는 action 객체를 생성하는 함수
+// saveProfile(payload) => {type: "profile/saveProfile",payload}
 export const { saveProfile } = profileSlice.actions;
 
 // slice.reducer
