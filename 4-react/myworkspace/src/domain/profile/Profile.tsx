@@ -63,7 +63,7 @@ const Profile = () => {
 
     // 1.action creator로 액션 객체생성
     const action = saveProfile({
-      image: url, 
+      image: url,
       username: inputRef.current?.value,
     });
     dispatch(action)
