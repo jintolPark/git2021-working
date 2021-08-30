@@ -133,7 +133,7 @@ const Todo = () => {
     console.log(ulRef.current);
 
     // ul 밑에 있는 입력박스중에서 index번째 입력박스만 선택
-    const input = ulRef.current?.querySelectorAll("input")[index];
+    const input = ulRef.current?.querySelectorAll("li")[index].querySelector("input");
 
     // immer 없이 map함수로 새로운 배열을 반환 후 변경
     // setTodoList(

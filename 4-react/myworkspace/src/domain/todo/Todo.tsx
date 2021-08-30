@@ -4,6 +4,8 @@ import produce from "immer";
 import TodoEditModal from "./TodoEditModal";
 // ./type.ts/js/tsx가 없으면, ./type/index.ts/js/tsx 로딩함
 import { TodoItemState } from "./type";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 const getTimeString = (unixtime: number) => {
   // Locale: timezone, currency 등
@@ -13,6 +15,7 @@ const getTimeString = (unixtime: number) => {
 };
 
 const Todo = () => {
+  const profile = useSelector((state: RootState)=> state.profile);
   console.log("--todowithmodal--");
   const [todoList, setTodoList] = useState<TodoItemState[]>([
     { id: 2, memo: "Typescript", createTime: new Date().getTime() },
@@ -81,6 +84,8 @@ const Todo = () => {
   return (
     <div style={{ width: "40vw" }} className="mx-auto">
       <h2 className="text-center my-5">할 일 관리</h2>
+      <img src={profile.image} width={150} height={100} alt={profile.username}/>
+      <span>{profile.username}</span>
       {/* isEdit state가 true일 때만 Modal 창이 보임 */}
       {isEdit && (
         <TodoEditModal

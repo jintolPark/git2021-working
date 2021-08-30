@@ -7,6 +7,8 @@
 import "./App.scss";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Suspense, lazy } from "react";
+import { Provider } from "react-redux";  // react 앱에 redux store를 제공해줌
+import { store } from "./store";  // redux  store
 
 import Home from "./domain/Home";
 
@@ -27,6 +29,7 @@ const Contact = lazy(() => import("./domain/Contact_박진석"));
 // React == 컴포넌트 개발 라이브러리
 function App() {
   return (
+    <Provider store={store}>
     <Router>
       {/* main container */}
       <div className="mx-auto">
@@ -37,6 +40,7 @@ function App() {
         <nav
           className="drawer-menu position-fixed bg-light shadow-sm"
         >
+          <h3 className="ms-2">MY WORKSTATION</h3>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -69,6 +73,7 @@ function App() {
         </main>
       </div>
     </Router>
+    </Provider>
   );
 }
 

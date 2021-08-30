@@ -1,21 +1,32 @@
 import { useRef, useState } from "react";
-import { bori } from "../../common/data";
+// import { bori } from "../../common/data";
+import { useSelector } from "react-redux"; // redux state 를 조회할수 있는 함수
+import { RootState } from "../../store";
 
 // 모듈명(컴포넌트명).module.scss
 // 해당 컴포넌트에서만 사용할 스타일시트
 // import 스타일변수 from "./모듈명.module.scss"
 import style from "./Profile.module.scss";
+// import profileSlice from "./profileSlice";
 
-interface ProfileState {
-  image: string | undefined;
-  username: string | undefined;
-}
+// interface ProfileState {
+//   image: string | undefined;
+//   username: string | undefined;
+// }
 
 const Profile = () => {
-  const [profile, setProfile] = useState<ProfileState>({
-    image: bori,
-    username: "Jinseok Park",
-  });
+  // local(component) state
+  // 컴포넌트 내부 또는 event-up props-down으로 공유 가능함
+  // const [profile, setProfile] = useState<ProfileState>({
+  //   image: bori,
+  //   username: "Jinseok Park",
+  // });
+
+  // global state 
+  // root state에서 profile state를 꺼내옴
+  // useSelector() 함수의 매개변수로 state를 리턴한 함수를 넣어줌
+  // useSelector함수에서 return 하는 함수의 매개변수로 root state를 넣어줌
+  const profile = useSelector((state: RootState) => state.profile);
 
   const [isShow, setIsShow] = useState(false); // 프로필 상세보기 제어
   const [isEdit, setIsEdit] = useState(false); // 수정모드 제어
@@ -36,8 +47,8 @@ const Profile = () => {
     }
   };
 
-  const save = () => {
-    setProfile({ image: url, username: inputRef.current?.value });
+  const handleSave = () => {
+    // setProfile({ image: url, username: inputRef.current?.value });
     setIsEdit(false);
   };
 
@@ -142,7 +153,7 @@ const Profile = () => {
                     className="link-secondary fs-6 text-nowrap me-2"
                     onClick={(e) => {
                       e.preventDefault();
-                      save();
+                      handleSave();
                     }}
                   >
                     save
