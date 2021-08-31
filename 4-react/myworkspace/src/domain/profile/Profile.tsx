@@ -3,37 +3,21 @@ import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"; // redux state 를 조회할수 있는 함수
 import { AppDispatch, RootState } from "../../store";
 
-// 모듈명(컴포넌트명).module.scss
-// 해당 컴포넌트에서만 사용할 스타일시트
-// import 스타일변수 from "./모듈명.module.scss"
+
 import style from "./Profile.module.scss";
 import { saveProfile } from "./profileSlice";
 // import profileSlice from "./profileSlice";
 
-// interface ProfileState {
-//   image: string | undefined;
-//   username: string | undefined;
-// }
 
 const Profile = () => {
-  // local(component) state
-  // 컴포넌트 내부 또는 event-up props-down으로 공유 가능함
-  // const [profile, setProfile] = useState<ProfileState>({
-  //   image: bori,
-  //   username: "Jinseok Park",
-  // });
-
-  // global state 
-  // root state에서 profile state를 꺼내옴
-  // useSelector() 함수의 매개변수로 state를 리턴한 함수를 넣어줌
-  // useSelector함수에서 return 하는 함수의 매개변수로 root state를 넣어줌
+  
   const profile = useSelector((state: RootState) => state.profile);
 
-  // redux dispatcher action을 전달하는 함수를 생성
+  
   const dispatch = useDispatch<AppDispatch>();
 
-  const [isShow, setIsShow] = useState(false); // 프로필 상세보기 제어
-  const [isEdit, setIsEdit] = useState(false); // 수정모드 제어
+  const [isShow, setIsShow] = useState(false); 
+  const [isEdit, setIsEdit] = useState(false); 
   const [url, setUrl] = useState<string | undefined>(profile.image); // 이미지 url
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -52,36 +36,20 @@ const Profile = () => {
   };
 
   const handleSave = () => {
-    // setProfile({ image: url, username: inputRef.current?.value });
-
-    // global(redux) state 처리
-
-    // action creator의 반환 객체로 dispatch하는 방법
-    // dispatch(액션함수(페이로드));
-    // dispatch(페이로드) => 액션객체 {type, payload}
-    // dispatch(saveProfile({image: url, username: inputRef.current?.value}))
-
-    // 1.action creator로 액션 객체생성
     const action = saveProfile({
       image: url,
       username: inputRef.current?.value,
     });
     dispatch(action)
 
-    // action 객체를 바로 dispatch 하는 방법
-    // dispatch({
-    //   type:"profile/saveProfile",
-    //   payload: {image: url, username: inputRef.current?.value},
-    // });
-
     setIsEdit(false);
   };
 
   return (
     <>
-      {/* profile 영역 */}
+ 
       <div className="dropdown me-5">
-        {/* 앱바 프로필 */}
+    
         <div
           style={{ cursor: "pointer" }}
           className="d-flex"
@@ -89,12 +57,7 @@ const Profile = () => {
             setIsShow(!isShow);
           }}
         >
-          {/* 스타일변수명.클래스명 */}
-          {/* 스타일 시트의 클래스를 객체화함
-            style: {
-              thumb: "Profile_thumb__sdfsdfsdf"
-            }
-          */}
+      
           <div
             className={`${style.thumb} me-1`}
             style={{ backgroundImage: `url(${profile.image})` }}
@@ -103,24 +66,22 @@ const Profile = () => {
             {profile.username}
           </span>
         </div>
-        {/* 프로필 상세보기 */}
+
         {isShow && (
           <div
             className="dropdown-menu d-flex flex-column align-items-center"
             style={{ right: "-30px" }}
           >
-            {/* 보기 모드 */}
+        
             {!isEdit && (
               <>
                 <div
-                  // 스타일변수명["클래스명"]
                   className={`${style["thumb-large"]}`}
                   style={{ backgroundImage: `url(${profile.image})` }}
                 ></div>
                 <p>{profile.username}</p>
               </>
             )}
-            {/* 수정 모드 */}
             {isEdit && (
               <>
                 <div
@@ -143,9 +104,7 @@ const Profile = () => {
               </>
             )}
 
-            {/* 하단 링크버튼 */}
             <div className="d-flex">
-              {/* 보기모드 */}
               {!isEdit && (
                 <>
                   <a
@@ -170,7 +129,6 @@ const Profile = () => {
                   </a>
                 </>
               )}
-              {/* 수정모드 */}
               {isEdit && (
                 <>
                   <a

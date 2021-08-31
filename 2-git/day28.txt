@@ -1,0 +1,55 @@
+클라우드서비스 
+:네트워크(인터넷) 상의 가상의 자원을 제공하는 서비스
+
+IaaS (Infrastructure as a Service)
+- 기반 시설, Server, Network, Storage
+
+PaaS(Platform as a Service)
+- 개발플랫폼, 백엔드 개발플랫폼, java/node.js
+-Haroku
+SaaS(Software as a Service)
+- 소프트웨어, 주로기업용소프트웨어, 구글드라이브, 네이버마이박스
+-Salesforce.com, MSOffice365
+-임대형 소프트웨어 인데 본이니 소유한 것과 같은 수준의 경험을 제공
+-Full-Cstomzing
+
+pwd(print working directory)
+: 현재 작업 디렉토리 출력
+    /: 루트(최상단) 디렉토리
+    /home: 사용자의 공간
+    /home/ubuntu: ubuntu라는 사용자의 디렉토리
+
+
+
+
+------------------------------------------------------------------------------------
+. 개발자 관점에서 운영체제를 알아야하는것
+------react 할때-------------
+- 디렉터리(폴더) 이동
+- 파일 복사, 삭제, 이름바꾸기, 이동
+- 편집기로 파일 수정
+- 패키지(프로그램) 설치하기
+------spring-----------------
+- 프로그램실행, 중지, 재시작
+- 프로그램 실행 로그 확인
+
+
+
+
+
+
+
+
+
+ssh -i "myworkspace.pem" ubuntu@ec2-3-34-196-93.ap-northeast-2.compute.amazonaws.com
+
+
+scp -i "myworkspace.pem" -r ./build/* ubuntu@ec2-3-34-196-93.ap-northeast-2.compute.amazonaws.com:/home/ubuntu/web/myworkspace
+
+
+
+
+
+
+
+

@@ -28,7 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "scp -i \"myworkspace.pem\" -r ./build/* ubuntu@ec2-3-34-196-93.ap-northeast-2.compute.amazonaws.com:/home/ubuntu/web/myworkspace"
   },
   "eslintConfig": {
     "extends": [

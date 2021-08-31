@@ -18,3 +18,6 @@ Redux: flux 패턴을 라이브러리 (js/ts) 만들어 놓은것
     -> Reducer 기존 state아 액션의 페이로드 state를 변경
 
 React-Redux: React 에서 Redux를 쓸수 있게 만들어 놓은것
+
+===============================================
+
