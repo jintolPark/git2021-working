@@ -81,7 +81,7 @@ const FeedEditModal = ({item, onClose, onSave }: ModalProp) => {
           className="form-control mb-1"
           placeholder="Leave a post here"
           style={{ boxSizing: "border-box", height: "15vh" }}
-          defaultValue={item.content}
+          
           ref={textRef}
         />
               <input 

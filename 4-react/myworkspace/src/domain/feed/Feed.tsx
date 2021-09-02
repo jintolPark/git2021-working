@@ -103,7 +103,7 @@ const save = (editItem: Prop) => {
 };
   return (
     <div style={{width: "40vw"}} className="mx-auto">
-      <h2 className="text-center my-5">Feeds</h2>
+      <h2 className="text-center my-5">FEED</h2>
       {isEdit && (
         <FeedEditModal 
         item={editItem.current}

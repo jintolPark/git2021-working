@@ -1,9 +1,5 @@
 const Home = () => {
-  return( 
-    <div style={{ width: "40vw" }} className="mx-auto">
-  <h1 className="d-flex text-center">Welcome To My Home~!</h1>
-  </div>
-  )
+  return <h1 className="text-center">Welcome To My Home</h1>;
 };
 
 export default Home;

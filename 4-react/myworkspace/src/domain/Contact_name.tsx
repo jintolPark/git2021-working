@@ -140,7 +140,7 @@ return (
       )}
   <form>
     <table className="table table-striped mt3 w-100">
-<thead>
+<thead className="justify-content-between">
     <tr>
       <th scope="col">#</th>
       <th scope="col">이름</th>
@@ -169,7 +169,7 @@ return (
      {item.isEdit &&(
       <input type="text" className="w-100" defaultValue={item.contact3} />
     )}</td>
-   
+    <td className="text-center">
      {!item.isEdit && (
               <button
                 className="btn btn-outline-secondary btn-sm text-nowrap"
@@ -188,12 +188,12 @@ return (
     삭제
     </button>
             )}
+            </td>
             {item.isEdit &&(
               <button
               className="btn btn-outline-secondary btn-sm text-nowrap"
               onClick={() => {
                 save(item.id, index);
-
               }}
             >
               저장

@@ -24,7 +24,9 @@ import Profile from "./domain/profile/Profile";
 // 컴포넌트를 방문하는 시점에 로딩함
 const Todo = lazy(() => import("./domain/todo/Todo"));
 const Feed = lazy(() => import("./domain/feed/Feed"));
-const Contact = lazy(() => import("./domain/Contact_박진석"));
+const Contact = lazy(() => import("./domain/Contact_name"));
+const Photo = lazy(() => import("./domain/photo/Photo"));
+const PhotoCreate = lazy(() => import("./domain/photo/PhotoCreate"));
 
 // React == 컴포넌트 개발 라이브러리
 function App() {
@@ -40,7 +42,7 @@ function App() {
         <nav
           className="drawer-menu position-fixed bg-light shadow-sm"
         >
-          <h3 className="ms-2">MY WORKSTATION</h3>
+          <h4 className="ms-2">MY WORKSTATION</h4>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -54,6 +56,9 @@ function App() {
             <li>
               <Link to="/contact">Contact</Link>
             </li>
+            <li>
+              <Link to="/photo">Photo</Link>
+            </li>
           </ul>
         </nav>
         <main className="content-container">
@@ -64,10 +69,13 @@ function App() {
               {/* Switch 영역에 컴포넌트가 로딩됨 */}
 
               {/* 해당 경로에 대해서 로딩할 컴포넌트 목록을 작성 */}
+              {/* exact: 속성은 true/false, 경로가 정확히 일치 할때만 */}
               <Route path="/" component={Home} exact />
               <Route path="/todo" component={Todo} />
               <Route path="/feeds" component={Feed} />
               <Route path="/contact" component={Contact} />
+              <Route path="/photo" component={Photo} exact />
+              <Route path="/photo/create" component={PhotoCreate} />
             </Switch>
           </Suspense>
         </main>
