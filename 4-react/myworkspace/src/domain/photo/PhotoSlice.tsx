@@ -26,7 +26,7 @@ const initialState: PhotoState = {
     {
       id: 5, // id는 숫자이거나, 증가되는 문자열
       profileUrl: bori,
-      username: "Daekeun Ko",
+      username: "Jinseok Park",
       title: "보리",
       description: "귀여운 박보리",
       photoUrl: bori,
@@ -35,7 +35,7 @@ const initialState: PhotoState = {
     {
       id: 4,
       profileUrl: bori,
-      username: "Daekeun Ko",
+      username: "Jinseok Park",
       title: "보리",
       description: "귀여운 박보리",
       photoUrl: bori,
@@ -44,7 +44,7 @@ const initialState: PhotoState = {
     {
       id: 3,
       profileUrl: bori,
-      username: "Daekeun Ko",
+      username: "Jinseok Park",
       title: "보리",
       description: "귀여운 박보리",
       photoUrl: bori,
@@ -53,7 +53,7 @@ const initialState: PhotoState = {
     {
       id: 2,
       profileUrl: bori,
-      username: "Daekeun Ko",
+      username: "Jinseok Park",
       title: "보리",
       description: "귀여운 박보리",
       photoUrl: bori,
@@ -62,7 +62,7 @@ const initialState: PhotoState = {
     {
       id: 1,
       profileUrl: bori,
-      username: "Daekeun Ko",
+      username: "Jinseok Park",
       title: "보리",
       description: "귀여운 박보리",
       photoUrl: bori,

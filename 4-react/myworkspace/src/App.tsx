@@ -24,7 +24,7 @@ import Profile from "./domain/profile/Profile";
 // 컴포넌트를 방문하는 시점에 로딩함
 const Todo = lazy(() => import("./domain/todo/Todo"));
 const Feed = lazy(() => import("./domain/feed/Feed"));
-const Contact = lazy(() => import("./domain/Contact_name"));
+const Contact = lazy(() => import("./domain/contact/Contact_name"));
 const Photo = lazy(() => import("./domain/photo/Photo"));
 const PhotoCreate = lazy(() => import("./domain/photo/PhotoCreate"));
 
@@ -32,55 +32,55 @@ const PhotoCreate = lazy(() => import("./domain/photo/PhotoCreate"));
 function App() {
   return (
     <Provider store={store}>
-    <Router>
-      {/* main container */}
-      <div className="mx-auto">
-      <header className="app-bar position-fixed d-flex justify-content-end bg-primary shadow">
-        <Profile/>
-        </header>
-       
-        <nav
-          className="drawer-menu position-fixed bg-light shadow-sm"
-        >
-          <h4 className="ms-2">MY WORKSTATION</h4>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/todo">Todo</Link>
-            </li>
-            <li>
-              <Link to="/feeds">Feeds</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-            <li>
-              <Link to="/photo">Photo</Link>
-            </li>
-          </ul>
-        </nav>
-        <main className="content-container">
-          {/* Suspense 컴포넌트로 로딩중에 보여줄 화면을 처리하는 것 */}
-          {/* fallback={로딩중에 보여줄 컴포넌트} */}
-          <Suspense fallback={<div>Loading...</div>}>
-            <Switch>
-              {/* Switch 영역에 컴포넌트가 로딩됨 */}
+      <Router>
+        {/* main container */}
+        <div className="mx-auto">
+          <header className="app-bar position-fixed d-flex justify-content-end bg-primary shadow">
+            <Profile />
+          </header>
 
-              {/* 해당 경로에 대해서 로딩할 컴포넌트 목록을 작성 */}
-              {/* exact: 속성은 true/false, 경로가 정확히 일치 할때만 */}
-              <Route path="/" component={Home} exact />
-              <Route path="/todo" component={Todo} />
-              <Route path="/feeds" component={Feed} />
-              <Route path="/contact" component={Contact} />
-              <Route path="/photo" component={Photo} exact />
-              <Route path="/photo/create" component={PhotoCreate} />
-            </Switch>
-          </Suspense>
-        </main>
-      </div>
-    </Router>
+          <nav
+            className="drawer-menu position-fixed bg-light shadow-sm"
+          >
+            <h4 className="ms-2">MY WORKSTATION</h4>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/todo">Todo</Link>
+              </li>
+              <li>
+                <Link to="/feeds">Feeds</Link>
+              </li>
+              <li>
+                <Link to="/contact">Contact</Link>
+              </li>
+              <li>
+                <Link to="/photo">Photo</Link>
+              </li>
+            </ul>
+          </nav>
+          <main className="content-container">
+            {/* Suspense 컴포넌트로 로딩중에 보여줄 화면을 처리하는 것 */}
+            {/* fallback={로딩중에 보여줄 컴포넌트} */}
+            <Suspense fallback={<div>Loading...</div>}>
+              <Switch>
+                {/* Switch 영역에 컴포넌트가 로딩됨 */}
+
+                {/* 해당 경로에 대해서 로딩할 컴포넌트 목록을 작성 */}
+                {/* exact: 속성은 true/false, 경로가 정확히 일치 할때만 */}
+                <Route path="/" component={Home} exact />
+                <Route path="/todo" component={Todo} />
+                <Route path="/feeds" component={Feed} />
+                <Route path="/contact" component={Contact} />
+                <Route path="/photo" component={Photo} exact />
+                <Route path="/photo/create" component={PhotoCreate} />
+              </Switch>
+            </Suspense>
+          </main>
+        </div>
+      </Router>
     </Provider>
   );
 }
