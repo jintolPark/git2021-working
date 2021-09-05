@@ -25,8 +25,11 @@ import Profile from "./domain/profile/Profile";
 const Todo = lazy(() => import("./domain/todo/Todo"));
 const Feed = lazy(() => import("./domain/feed/Feed"));
 const Contact = lazy(() => import("./domain/contact/Contact_name"));
+const ContactCreate = lazy(() => import("./domain/contact/ContactCreate"));
 const Photo = lazy(() => import("./domain/photo/Photo"));
 const PhotoCreate = lazy(() => import("./domain/photo/PhotoCreate"));
+const PhotoDetail = lazy(() => import("./domain/photo/PhotoDetail"));
+const PhotoEdit = lazy(() => import("./domain/photo/PhotoEdit"));
 
 // React == 컴포넌트 개발 라이브러리
 function App() {
@@ -73,9 +76,12 @@ function App() {
                 <Route path="/" component={Home} exact />
                 <Route path="/todo" component={Todo} />
                 <Route path="/feeds" component={Feed} />
-                <Route path="/contact" component={Contact} />
+                <Route path="/contact" component={Contact} exact />
+                <Route path="/contact/create" component={ContactCreate} />
                 <Route path="/photo" component={Photo} exact />
                 <Route path="/photo/create" component={PhotoCreate} />
+                <Route path="/photo/detail/:id" component={PhotoDetail} />
+                <Route path="/photo/edit/:id" component={PhotoEdit} />
               </Switch>
             </Suspense>
           </main>

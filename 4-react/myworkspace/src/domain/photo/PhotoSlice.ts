@@ -12,6 +12,8 @@ export interface PhotoItem {
   title: string;
   description?: string;
   photoUrl: string;
+  fileType: string;
+  fileName: string;
   createdTime: number;
 }
 // 백엔드 연동 고려해서 state 구조를 설계
@@ -28,8 +30,10 @@ const initialState: PhotoState = {
       profileUrl: bori,
       username: "Jinseok Park",
       title: "보리",
-      description: "귀여운 박보리",
+      description: "귀여운 보리",
       photoUrl: bori,
+      fileType: "image/jpeg",
+      fileName: "bori.jpg",
       createdTime: new Date().getTime(),
     },
     {
@@ -37,8 +41,10 @@ const initialState: PhotoState = {
       profileUrl: bori,
       username: "Jinseok Park",
       title: "보리",
-      description: "귀여운 박보리",
+      description: "귀여운 보리",
       photoUrl: bori,
+      fileType: "image/jpeg",
+      fileName: "bori.jpg",
       createdTime: new Date().getTime(),
     },
     {
@@ -46,8 +52,10 @@ const initialState: PhotoState = {
       profileUrl: bori,
       username: "Jinseok Park",
       title: "보리",
-      description: "귀여운 박보리",
+      description: "귀여운 보리",
       photoUrl: bori,
+      fileType: "image/jpeg",
+      fileName: "bori.jpg",
       createdTime: new Date().getTime(),
     },
     {
@@ -55,8 +63,10 @@ const initialState: PhotoState = {
       profileUrl: bori,
       username: "Jinseok Park",
       title: "보리",
-      description: "귀여운 박보리",
+      description: "귀여운 보리",
       photoUrl: bori,
+      fileType: "image/jpeg",
+      fileName: "bori.jpg",
       createdTime: new Date().getTime(),
     },
     {
@@ -64,8 +74,10 @@ const initialState: PhotoState = {
       profileUrl: bori,
       username: "Jinseok Park",
       title: "보리",
-      description: "귀여운 박보리",
+      description: "귀여운 보리",
       photoUrl: bori,
+      fileType: "image/jpeg",
+      fileName: "bori.jpg",
       createdTime: new Date().getTime(),
     },
   ],
@@ -77,15 +89,42 @@ const photoSlice = createSlice({
   initialState,
   reducers: {
     // PayloadAction<payload타입>
+    // payload로 item객체를 받음
     addPhoto: (state, action: PayloadAction<PhotoItem>) => {
       const photo = action.payload;
       console.log("--in reducer function--");
       console.log(photo);
       state.data.unshift(photo);
     },
+    // payload로 id값을 받음
+    // action: PayloadAction<number>
+    // reducer 넘어오는 action은 payload있는 액션인데,
+    // payload의 타입이 number이다.
+    removePhoto: (state, action: PayloadAction<number>) => {
+      const id = action.payload;
+      // id에 해당하는 아이템의 index를 찾고 그 index로 splice를 한다.
+      state.data.splice(
+        state.data.findIndex((item) => item.id === id),
+        1
+      );
+    },
+    modifyPhoto: (state, action: PayloadAction<PhotoItem>) => {
+      // 생성해서 넘긴 객체
+      const modifyItem = action.payload;
+      // state에 있는 객체
+      const photoItem = state.data.find((item) => item.id === modifyItem.id);
+      // state에 있는 객체의 속성을 넘김 객체의 속성으로 변경
+      if (photoItem) {
+        photoItem.title = modifyItem.title;
+        photoItem.description = modifyItem.description;
+        photoItem.photoUrl = modifyItem.photoUrl;
+        photoItem.fileName = modifyItem.fileName;
+        photoItem.fileType = modifyItem.fileType;
+      }
+    },
   },
 });
 
-export const { addPhoto } = photoSlice.actions;
+export const { addPhoto, removePhoto, modifyPhoto } = photoSlice.actions;
 
 export default photoSlice.reducer;
