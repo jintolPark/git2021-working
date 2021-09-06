@@ -1,0 +1,20 @@
+number, string, boolean 
+: java에는 무자열이 기본데이터 타입이 아님
+: primitive type(원시형 타입)
+
+// 숫자형
+정수 (소숫점이 없는것)
+- byte
+ -> 8비트, 256개, 2를8번제곱함, 2^8
+     -> -128 ~ 0 ~ 127
+         1바이트
+- char(문자)
+     -> A, B, C,...
+        2바이트
+- int 4byte
+  -21억
+- long 8byte
+실수 (소숫점이 있는것)
+- float, double(좀더 많이 씀)
+// 논리형
+true, false
