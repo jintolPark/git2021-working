@@ -29,7 +29,7 @@ const ContactCreate = () => {
       contact2: phoneNumInput.current ? phoneNumInput.current.value : "",
       contact3: emailInput.current ? emailInput.current.value : "",
       description: descText.current ? descText.current.value : "",
-      createdTime: new Date().getDate(),
+      createdTime: new Date().getTime(),
     };
     console.log(item)
 

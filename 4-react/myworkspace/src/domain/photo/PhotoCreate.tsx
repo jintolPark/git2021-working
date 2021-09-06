@@ -83,7 +83,7 @@ const PhotoCreate = () => {
     <div style={{ width: "40vw" }} className="mx-auto">
       <h2 className="text-center">Photo Create</h2>
       <form>
-        <table className="table">
+        <table className="table text-nowrap">
           <tbody>
             <tr>
               <th>제목</th>

@@ -81,7 +81,7 @@ const PhotoEdit = () => {
     <div style={{ width: "40vw" }} className="mx-auto">
       <h2 className="text-center">Photo Edit</h2>
       <form>
-        <table className="table">
+        <table className="table text-nowrap">
           <tbody>
             <tr>
               <th>제목</th>
@@ -108,7 +108,7 @@ const PhotoEdit = () => {
             <tr>
               <th>이미지</th>
               <td>
-                <img src={url} alt={photoItem?.title} />
+                <img src={url} className="card-img-top" alt={photoItem?.title} />
                 <input
                   className="form-control"
                   type="file"

@@ -32,7 +32,7 @@ const PhotoDetail = () => {
       <h2 className="text-center">Photo Detail</h2>
       {!photoItem && <div className="text-center my-5">데이터가 없습니다.</div>}
       {photoItem && (
-        <table className="table">
+        <table className="table text-nowrap">
           <tbody>
             <tr>
               <th>제목</th>
@@ -45,7 +45,7 @@ const PhotoDetail = () => {
             <tr>
               <th>이미지</th>
               <td>
-                <img src={photoItem.photoUrl} alt={photoItem.title} />
+                <img src={photoItem.photoUrl} className="card-img-top" alt={photoItem.title} />
               </td>
             </tr>
           </tbody>

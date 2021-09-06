@@ -26,6 +26,8 @@ const Todo = lazy(() => import("./domain/todo/Todo"));
 const Feed = lazy(() => import("./domain/feed/Feed"));
 const Contact = lazy(() => import("./domain/contact/Contact"));
 const ContactCreate = lazy(() => import("./domain/contact/ContactCreate"));
+const ContactDetail = lazy(() => import("./domain/contact/ContactDetail"));
+const ContactEdit = lazy(() => import("./domain/contact/ContactEdit"));
 const Photo = lazy(() => import("./domain/photo/Photo"));
 const PhotoCreate = lazy(() => import("./domain/photo/PhotoCreate"));
 const PhotoDetail = lazy(() => import("./domain/photo/PhotoDetail"));
@@ -78,6 +80,8 @@ function App() {
                 <Route path="/feeds" component={Feed} />
                 <Route path="/contact" component={Contact} exact />
                 <Route path="/contact/create" component={ContactCreate} />
+                <Route path="/contact/detail/:id" component={ContactDetail} />
+                <Route path="/contact/edit/:id" component={ContactEdit} />
                 <Route path="/photo" component={Photo} exact />
                 <Route path="/photo/create" component={PhotoCreate} />
                 <Route path="/photo/detail/:id" component={PhotoDetail} />
