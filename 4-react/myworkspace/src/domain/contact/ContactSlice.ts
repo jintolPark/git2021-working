@@ -15,18 +15,19 @@ interface ContactState {
   isFetched: boolean;
 }
 
+
 const initialState: ContactState = {
   data: [
     {
-      id: 1,
+      id: 2,
       contact1: "박진석",
       contact2: "010-4462-0529",
       contact3: "pjsjja458@naver.com",
       description: "내정보",
-      createdTime: new Date().getTime(),
+      createdTime: new Date().getUTCMinutes(),
     },
     {
-      id: 2,
+      id: 1,
       contact1: "박진석",
       contact2: "010-4462-0529",
       contact3: "pjsjja458@naver.com",
@@ -42,12 +43,9 @@ const contactSlice = createSlice({
   initialState,
   reducers: {
     addContact: (state, action: PayloadAction<ContactItem>) => {
-      const contact1 = action.payload;
-      const contact2 = action.payload;
-      const contact3 = action.payload;
-      state.data.unshift(contact1)
-      state.data.unshift(contact2)
-      state.data.unshift(contact3)
+      const contact = action.payload;
+      console.log(contact);
+      state.data.unshift(contact)
     },
     removeContact: (state, action: PayloadAction<number>) => {
       const id = action.payload;

@@ -75,7 +75,7 @@ const initialState: PhotoState = {
       username: "Jinseok Park",
       title: "보리",
       description: "귀여운 보리",
-      photoUrl: bori,
+      photoUrl: "",
       fileType: "image/jpeg",
       fileName: "bori.jpg",
       createdTime: new Date().getTime(),

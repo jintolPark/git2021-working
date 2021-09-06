@@ -24,7 +24,7 @@ import Profile from "./domain/profile/Profile";
 // 컴포넌트를 방문하는 시점에 로딩함
 const Todo = lazy(() => import("./domain/todo/Todo"));
 const Feed = lazy(() => import("./domain/feed/Feed"));
-const Contact = lazy(() => import("./domain/contact/Contact_name"));
+const Contact = lazy(() => import("./domain/contact/Contact"));
 const ContactCreate = lazy(() => import("./domain/contact/ContactCreate"));
 const Photo = lazy(() => import("./domain/photo/Photo"));
 const PhotoCreate = lazy(() => import("./domain/photo/PhotoCreate"));

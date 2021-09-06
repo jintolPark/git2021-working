@@ -5,7 +5,6 @@ import { AppDispatch, RootState } from "../../store";
 import { addContact, ContactItem } from "./ContactSlice";
 
 
-
 const ContactCreate = () => {
   const nameInput = useRef<HTMLInputElement>(null)
   const phoneNumInput = useRef<HTMLInputElement>(null)
@@ -13,7 +12,7 @@ const ContactCreate = () => {
   const descText = useRef<HTMLTextAreaElement>(null)
 
   const ContactData = useSelector((state: RootState) => state.contact.data);
-  const profile = useSelector((state: RootState) => state.profile);
+  // const profile = useSelector((state: RootState) => state.profile);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -30,7 +29,7 @@ const ContactCreate = () => {
       contact2: phoneNumInput.current ? phoneNumInput.current.value : "",
       contact3: emailInput.current ? emailInput.current.value : "",
       description: descText.current ? descText.current.value : "",
-      createdTime: new Date().getTime(),
+      createdTime: new Date().getDate(),
     };
     console.log(item)
 
@@ -39,31 +38,32 @@ const ContactCreate = () => {
     history.push("/contact");
   }
   return (
-    <div style={{ width: "40vw" }} className="mx-auto">
+    <div style={{ width: "50vw" }} className="mx-auto">
       <h2 className="text-center">ContactCreate</h2>
       <form>
-        <table className="table">
-          <tr>
-            <th>정보입력</th>
-            <td>
-              <input className="form-control mt-2" type="text" ref={nameInput} placeholder="이름" />
-
-              <input className="form-control mt-2" type="text" ref={phoneNumInput} placeholder="전화번호" />
-
-              <input className="form-control mt-2" type="text" ref={emailInput} placeholder="이메일" />
-            </td>
-          </tr>
-          <tr>
-            <th>메모</th>
-
-            <textarea className="form-control mt-3"
-              style={{ height: "40vh" }}
-              ref={descText}
-              placeholder="메모"
-            ></textarea>
-
-          </tr>
+        <table className="table text-nowrap">
+          <tbody>
+            <tr>
+              <th>입력</th>
+              <td>
+                <input className="form-control" type="text" ref={nameInput} placeholder="이름" />
+              </td>
+              <td>
+                <input className="form-control" type="text" ref={phoneNumInput} placeholder="전화번호" />
+              </td>
+              <td>
+                <input className="form-control" type="text" ref={emailInput} placeholder="이메일" />
+              </td>
+            </tr>
+          </tbody>
         </table>
+        <div>
+          <textarea className="form-control mt-2 mb-3"
+            style={{ height: "40vh" }}
+            ref={descText}
+            placeholder="메모"
+          />
+        </div>
       </form>
       <div>
         <button
