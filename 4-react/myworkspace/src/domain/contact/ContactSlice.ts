@@ -24,7 +24,7 @@ const initialState: ContactState = {
       contact2: "010-4462-0529",
       contact3: "pjsjja458@naver.com",
       description: "내정보",
-      createdTime: new Date().getUTCMinutes(),
+      createdTime: new Date().getDate(),
     },
     {
       id: 1,
