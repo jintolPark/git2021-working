@@ -19,7 +19,7 @@ const Contact = () => {
   };
 
   return (
-    <div style={{ width: "50vw" }} className="mx-auto">
+    <div style={{ width: "40vw" }} className="mx-auto">
       <h2 className="text-center my-5">연락처</h2>
       <div className="d-flex justify-content-end mb-2">
         <button

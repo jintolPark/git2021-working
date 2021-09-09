@@ -34,7 +34,7 @@ const ContactEdit = () => {
 
 
   return (
-    <div style={{ width: "50vw" }} className="mx-auto">
+    <div style={{ width: "40vw" }} className="mx-auto">
       <h2 className="text-center">ContactEdit</h2>
       <form>
         <table className="table text-nowrap">
