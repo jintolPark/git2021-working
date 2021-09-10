@@ -53,7 +53,6 @@ const Contact = () => {
                   scope="row"
                   style={{ cursor: "pointer" }}
                   onClick={() => {
-                    // id값을 물고 이동해야함
                     history.push(`/contact/detail/${item.id}`);
                   }}
                 >{item.contact1}</th>
@@ -61,7 +60,6 @@ const Contact = () => {
                   scope="row"
                   style={{ cursor: "pointer" }}
                   onClick={() => {
-                    // id값을 물고 이동해야함
                     history.push(`/contact/detail/${item.id}`);
                   }}
                 >{item.contact2}</th>
@@ -69,7 +67,6 @@ const Contact = () => {
                   scope="row"
                   style={{ cursor: "pointer" }}
                   onClick={() => {
-                    // id값을 물고 이동해야함
                     history.push(`/contact/detail/${item.id}`);
                   }}
                 >{item.contact3}</th>

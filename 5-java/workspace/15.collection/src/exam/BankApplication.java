@@ -47,6 +47,7 @@ public class BankApplication {
 
 	// 계좌생성하기(계좌추가하기)
 	private static void createAccount() {
+
 	}
 
 	// 계좌목록보기
