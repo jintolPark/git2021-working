@@ -1,34 +1,41 @@
 package exercise;
 
+import java.util.Date;
+
 public class Printer {
 
-	public void println(int i) {
+	void println(int i) {
+		// TODO Auto-generated method stub
 		System.out.println(i);
+
 	}
 
-	public void println(boolean b) {
+	void println(boolean b) {
+		// TODO Auto-generated method stub
 		System.out.println(b);
 	}
 
-	public void println(double d) {
+	void println(double d) {
+		// TODO Auto-generated method stub
 		System.out.println(d);
 	}
 
-	public void println(String string) {
-		System.out.println(string);
+	@SuppressWarnings("deprecation")
+	void println(String string) {
+		// TODO Auto-generated method stub
+		System.out.println(new Date().toLocaleString() + ": " + string);
 	}
 
-	// 출력할때 앞에 데코레이터를 추가해서 출력
-	// println("홍길동", 1)s
-	// 1홍길동
-	public void println(String string, int index) {
+	void println(String string, int index) {
+		// TODO Auto-generated method stub
 		System.out.println(index + " " + string);
 	}
 
-	// 출력할때 앞에 데코레이터를 추가해서 출력
-	// println("홍길동", "--")
-	// --홍길동
-	public void println(String string, int i, String decorate) {
-		System.out.println(i + " " + string + " " + decorate);
+	// postfix: 뒤쪽에 붙는 글자
+	// prefix: 앞쪽에 붙는 글자
+	void println(String string, int index, String postfix) {
+		// TODO Auto-generated method stub
+		System.out.println(index + " " + string + " " + postfix);
 	}
+
 }

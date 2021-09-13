@@ -22,6 +22,7 @@ public class UserExample {
 		user.printUserInfo();
 		// 자식 객체의 메서드, 필드는 사용 불가함
 //		user.setDeptNo("10001");
+		// 가능함 Admin <- Admin
 		Admin admin2 = (Admin) user;
 
 		// 멤버십 멤버
@@ -31,30 +32,30 @@ public class UserExample {
 		user.setName("김쿠팡");
 		user.setPhone("01009876543");
 		// 자식 객체의 메서드, 필드는 사용 불가함
+//		user.setPoint(100000);
 
 		// **자식 객체의 재정의 메서드가 호출됨
 		user.printUserInfo();
 
-		// 컴파일 타임에서는 오류가발생하지 않음
-		// 실행 타임에서는 오류가 발생함 Admin <- Mamber
-		// intanceof 연산을 통해 해당클래스의 객체가 맞는지 확인
-		// user객체가 admin 타입의 인스턴스인지 확인
+		// 컴파일 타임에서는 오류가 발생하지 않음
+		// 실행 타임에서는 오류가 발생함 Admin <- Member
+		// intanceof 연산을 통해 해당 클래스의 객체가 맞는지 확인
+		// user객체가 Admin타입의 인스턴스인지 확인
 		if (user instanceof Admin) {
 			Admin admin3 = (Admin) user;
-
 		}
+
 		// 모든 클래스들의 최상위 부모가 Object 클래스임
-		// extends 를 쓰고있지 않지만 내부적으로 extends 되어있는 상태
+		// extends를 쓰고 있지 않지만 내부적으로 extends 되어 있는 상태
 		Object obj = new Object();
 		obj = user;
+
 		System.out.println();
 		System.out.println(obj);
-
 		// 강제로 형식 객체 형식 변환을 할 때는 instanceof 사용
-		if (user instanceof Admin) {
+		if (obj instanceof Admin) {
 			Admin admin4 = (Admin) obj;
 			System.out.println(admin4);
 		}
 	}
-
 }

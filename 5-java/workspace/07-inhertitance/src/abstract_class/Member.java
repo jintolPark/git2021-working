@@ -14,12 +14,11 @@ public class Member extends User {
 		// 구현 내용은 다름
 
 		// 1. 직접 새로 구현
-		// System.out.println(this.getName() + ", " + this.getPhone() + " - 포인트: " +
-		// this.point);
+		System.out.println(this.getName() + ", " + this.getPhone() + " - 포인트: " + this.point);
 
-		// 2. 부모 메서드를 재활용
-		super.printUserInfo();
-		System.out.print(" - 포인트: " + this.point);
+//		// 2. 부모 메서드를 재활용
+//		super.printUserInfo();
+//		System.out.print(" - 포인트: " + this.point);
 	}
 
 	public int getPoint() {

@@ -1,16 +1,15 @@
 package abstract_class;
 
-// 사용자
-
-// final class 상속 불가한 클래스
-//public final class User {
-public class User {
+// 사용자 - 자식객체의 구조만 나타내는 클래스
+// 자식객체의 기본 필드, 메서드와 추가 구현해야되는 메서드의 뼈대만 제공
+// public abstract class 클래스명
+public abstract class User {
 	private String id;
 	private String name;
 	private String phone;
 
-	// final 메서드 : 재정의 불가능한 메서드
-//	public final void printUserInfo() {
+	// 추상 메서드: 자식 클래스에서 구현함
+	// 자식객체의 메서드 시그니처를 동일하게 하기 위함
 	public abstract void printUserInfo();
 
 	public String getId() {

@@ -13,8 +13,14 @@ public class Admin extends User {
 	// public Admin () {
 	// super(); // 기본 부모생성자 호출
 	// }
-	public void 
-	
+
+	// 추상 메서드를 구현하지 않으면 컴파일 타임에 오류발생
+	// 즉, 무조건 구현해야함
+	@Override
+	public void printUserInfo() {
+		System.out.println("부서:" + deptNo + " - " + this.getName() + ", " + this.getPhone());
+	}
+
 	public String getDeptNo() {
 		return deptNo;
 	}

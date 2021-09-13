@@ -28,7 +28,7 @@ public class Student {
 	// 생성자를 임의로 만들면, 기본생성자는 제거됨
 	// 이름과 나이를 매개변수로 받아서
 	// 객체(인스턴스)를 생성하는 생성자 메서드
-	public Student(String name, int age) {
+	Student(String name, int age) {
 //	Student(String _name, int _age) {
 		// this.필드
 		// 만들어질 객체의 필드에 접근

@@ -3,9 +3,8 @@ package exercise;
 public class Account {
 
 	private int balance;
-
-	private final static int MIN_BALANCE = 0;
-	private final static int MAX_BALANCE = 1000000;
+	private final int MIN_BALANCE = 0;
+	private final int MAX_BALANCE = 1000000;
 
 	public int getBalance() {
 		return balance;
@@ -17,4 +16,5 @@ public class Account {
 		}
 		this.balance = balance;
 	}
+
 }
