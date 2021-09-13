@@ -46,7 +46,7 @@ public class BankApplication {
 		String ano = scanner.next();
 
 		System.out.println("----------");
-		System.out.println("계좌 주인 :");
+		System.out.println("계좌 주 :");
 		String owner = scanner.next();
 
 		System.out.println("----------");
