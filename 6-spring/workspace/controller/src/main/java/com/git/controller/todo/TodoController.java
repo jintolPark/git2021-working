@@ -92,6 +92,7 @@ public class TodoController {
 
 		// 데이터 검증 로직
 		// 메모값이 없으면 에러처리함
+		String memo = getPlainText(todo.getMemo());
 		if (todo.getMemo() == null || todo.getMemo().isEmpty()) {
 
 			res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -99,9 +100,12 @@ public class TodoController {
 		}
 
 		// 데이터 변경
-		findItem.setMemo(todo.getMemo());
+		findItem.setMemo(memo);
 
 		return findItem;
 	}
 
+	private String getPlainText(String text) {
+		return text.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
+	}
 }
