@@ -6,11 +6,14 @@
 // 백엔드 state: 비즈니스 로직 처리기 바뀌게 하는 데이터
 // -> 주문상태(주문요청, 결제 , 결제확인, 배송중, 배송완료)
 // -> 승인 상태(제출, 검토중, 반려, 승인)
-
 import { configureStore } from "@reduxjs/toolkit";
-import profileReducer from "../domain/profile/profileSlice"
-import photosReducer from "../domain/photo/PhotoSlice";
-import ContactReducer from "../domain/contact/ContactSlice"
+import profileReducer from "../features/profile/profileSlice"
+import photosReducer from "../features/photo/PhotoSlice";
+import ContactReducer from "../features/contact/ContactSlice"
+import rootSaga from "../saga";
+import createSagaMiddleware from "@redux-saga/core";
+
+// const sagamiddleware = ;
 // global state 저장소 만듦 
 // global state : profile, todo, contact...여러개 state가 있음
 // ** 이러한 state 들은 다른 컴포넌트와 state가 공유됨

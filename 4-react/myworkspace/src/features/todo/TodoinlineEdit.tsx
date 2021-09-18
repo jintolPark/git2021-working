@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Alert from "../components/Alert";
 
 import produce from "immer";
@@ -33,6 +33,24 @@ const Todo = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const ulRef = useRef<HTMLUListElement>(null);
+  // useEffect: 특정 조건일때 작동하는 코드를 작성할수있게하는 React hook
+  // React Hook: 클래스컴포넌트에서만 할수 있었던 작업을 함수형 컴포넌트에서 사용할 수있게함
+  // 클래스컴포넌트 state, 컴포넌트 라이프사이클을 처리할수있음 (stateful)
+  // 함수형 컴포넌트 다른컴포넌트로부터 받은 prop으로 화면에 렌더링만(stateless)
+
+  // useEffect(이펙트를 처리할함수,[조건변수])
+  // 의존변수의 값/참조가 바뀔때마다 함수가 처리됨
+  // ex) props가 바뀌거나 state가 바뀔떄 추가적인 처리를함  
+  useEffect(() => {
+    // 의존변수가 바뀔때 처리되는 코드를 작성
+    // 컴포넌트 로딩 후에 바로 처리되는 코드
+    console.log("--mounted--")
+    fetch("http://localhost:8080/todos")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+      })
+  }, [])
 
   const add = (e: React.KeyboardEvent<HTMLInputElement> | null) => {
     // 이벤트 객체가 있을 때는 입력박스에서 엔터 입력
