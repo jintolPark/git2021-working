@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { requestAddContact } from "./contactSaga";
@@ -14,16 +14,21 @@ const ContactCreate = () => {
 
   const contactData = useSelector((state: RootState) => state.contact.data);
   // const profile = useSelector((state: RootState) => state.profile);
+  const isAddCompleted = useSelector(
+    (state: RootState) => state.contact.isAddCompleted
+  );
 
   const dispatch = useDispatch<AppDispatch>();
 
   const history = useHistory();
 
+  useEffect(() => {
+    console.log("--isAddCompleted로 변경" + isAddCompleted)
+    isAddCompleted && history.push("/contacts");
+  }, [isAddCompleted, history, dispatch]);
+
   const handleAddClick = () => {
-    // console.log(nameInput.current?.value);
-    // console.log(phoneNumInput.current?.value);
-    // console.log(emailInput.current?.value);
-    // console.log(descText.current?.value);
+
     const item: ContactItem = {
       id: contactData.length ? contactData[0].id + 1 : 1,
       name: nameInput.current ? nameInput.current.value : "",
@@ -34,7 +39,9 @@ const ContactCreate = () => {
     };
     // console.log(item)
 
+    // ----기존 redux action
     // dispatch(addContact(item));
+    // ----saga action
     dispatch(requestAddContact(item));
 
 

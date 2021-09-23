@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
@@ -14,12 +14,23 @@ const PhotoCreate = () => {
 
   // 포토 데이터 배열 가져오기
   const photoData = useSelector((state: RootState) => state.photo.data);
+  //추가 완료 여부 
+  // 1. state 변경감지 및 값 가져오기
+  const isAddCompleted = useSelector(
+    (state: RootState) => state.photo.isAddCompleted
+  );
 
   // dispatch 함수 만들기
   const dispatch = useDispatch<AppDispatch>();
 
   // history 객체 가져오기
   const history = useHistory();
+
+  useEffect(() => {
+    console.log("--isAddCompleted로 변경: " + isAddCompleted);
+    // true명 화면 이동
+    isAddCompleted && history.push("/photos");
+  }, [isAddCompleted, history, dispatch]);
 
   const handleAddClick = () => {
     // console.log(titleInput.current?.value);
@@ -74,7 +85,7 @@ const PhotoCreate = () => {
         // });
 
         // 목록 화면으로 이동
-        history.push("/photos");
+        // history.push("/photos");
       };
 
       reader.readAsDataURL(imageFile);

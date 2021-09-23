@@ -1,7 +1,7 @@
 
 
 import { useRef, useState } from "react";
-import Alert from "../components/Alert";
+import Alert from "../components/alert/Alert";
 import produce from "immer";
 
 

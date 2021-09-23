@@ -14,12 +14,15 @@ export interface ContactItem {
 interface ContactState {
   data: ContactItem[];
   isFetched: boolean;
+  isAddCompleted?: boolean; // 데이터 추가가 완료되었는지 여부
+  isRemoveCompleted?: boolean; // 데이터 삭제가 완료되었는지 여부
+  isModifyCompleted?: boolean; // 데이터 수정이 완료되었는지 여부
 }
 
 
 const initialState: ContactState = {
   data: [],
-  isFetched: false
+  isFetched: false,
 }
 
 
@@ -33,6 +36,11 @@ const contactSlice = createSlice({
       console.log("--in reducer function--")
       console.log(contact);
       state.data.unshift(contact)
+    },
+    initialCompleted: (state) => {
+      delete state.isAddCompleted;
+      delete state.isRemoveCompleted;
+      delete state.isModifyCompleted;
     },
     removeContact: (state, action: PayloadAction<number>) => {
       const id = action.payload;
@@ -59,5 +67,5 @@ const contactSlice = createSlice({
   },
 });
 
-export const { addContact, removeContact, modifyContact, initialContact } = contactSlice.actions;
+export const { addContact, removeContact, modifyContact, initialContact, initialCompleted } = contactSlice.actions;
 export default contactSlice.reducer;

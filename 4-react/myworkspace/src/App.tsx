@@ -11,9 +11,9 @@ import { Provider } from "react-redux";  // react 앱에 redux store를 제공�
 import { store } from "./store";  // redux  store
 
 import Home from "./features/Home";
-
 import Profile from "./features/profile/Profile";
-
+import Progress from "./components/progress/Progress";
+import AlertStack from "./components/alert/AlertStack"
 // SPA(Single Page Application)
 // : 페이지 파일이 1개, index.html
 // : 특정 영역(Switch)에 컴포넌트(js)를 로딩함
@@ -47,7 +47,7 @@ function App() {
           <nav
             className="drawer-menu position-fixed bg-light shadow-sm"
           >
-            <h4 className="ms-2">MY WORKSTATION</h4>
+            <h5 className="ms-2 mt-2 text-nowrap">MY WORKSTATION</h5>
             <ul>
               <li>
                 <Link to="/">Home</Link>
@@ -88,6 +88,9 @@ function App() {
                 <Route path="/photos/edit/:id" component={PhotoEdit} />
               </Switch>
             </Suspense>
+
+            <Progress />
+            <AlertStack />
           </main>
         </div>
       </Router>

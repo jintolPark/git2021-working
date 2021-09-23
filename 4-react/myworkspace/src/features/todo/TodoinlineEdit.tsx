@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import Alert from "../../components/Alert";
+import Alert from "../../components/alert/Alert";
 
 import produce from "immer";
 
@@ -199,7 +199,7 @@ const Todo = () => {
     // ul > li[index] 밑에 input박스를 찾음
     const input = ulRef.current
       ?.querySelectorAll("li")
-      [index].querySelector("input");
+    [index].querySelector("input");
     // console.log(li);
     console.log(input);
 

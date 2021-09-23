@@ -1,6 +1,6 @@
 import produce from "immer";
 import React, { useRef, useState } from "react";
-import Alert from "../../components/Alert"
+import Alert from "../../components/alert/Alert"
 
 interface ContactState {
   id: number;

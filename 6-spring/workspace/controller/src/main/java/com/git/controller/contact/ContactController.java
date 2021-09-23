@@ -32,6 +32,7 @@ public class ContactController {
 
 	@PostMapping(value = "/contacts")
 	public Contact addContact(@RequestBody Contact contact, HttpServletResponse res) {
+//		Thread.sleep(1000); // 임시
 		System.out.println(contact);
 
 		if (contact.getName() == null || contact.getName().isEmpty()) {
@@ -54,7 +55,7 @@ public class ContactController {
 			return null;
 		}
 
-		if (contact.getEmail() == null || contact.getPhoneNum().isEmpty()) {
+		if (contact.getEmail() == null || contact.getEmail().isEmpty()) {
 			res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return null;
 		}
@@ -151,7 +152,7 @@ public class ContactController {
 		findItem.setName(name);
 		findItem.setPhoneNum(phoneNum);
 		findItem.setEmail(email);
-		findItem.setEmail(description);
+		findItem.setDescription(description);
 
 		return findItem;
 	}

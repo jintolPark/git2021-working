@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
@@ -13,9 +14,16 @@ const ContactDetail = () => {
     state.contact.data.find((item) => item.id === +id)
   );
   console.log(contactItem);
+  const isRemoveCompleted = useSelector((state: RootState) =>
+    state.contact.isRemoveCompleted
+  )
 
   const history = useHistory();
   const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    isRemoveCompleted && history.push("/contacts");
+  }, [isRemoveCompleted, history])
 
   const handDeleteClick = () => {
     dispatch(removeContact(+id));

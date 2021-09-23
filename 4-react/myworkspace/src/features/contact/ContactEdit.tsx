@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
@@ -10,6 +10,10 @@ const ContactEdit = () => {
   const contactItem = useSelector((state: RootState) =>
     state.contact.data.find((item) => item.id === +id)
   )
+  const isModifyCompleted = useSelector(
+    (state: RootState) =>
+      state.contact.isModifyCompleted
+  );
 
   const dispatch = useDispatch<AppDispatch>();
   const history = useHistory();
@@ -18,6 +22,10 @@ const ContactEdit = () => {
   const phoneNumInput = useRef<HTMLInputElement>(null)
   const emailInput = useRef<HTMLInputElement>(null)
   const descText = useRef<HTMLTextAreaElement>(null)
+
+  useEffect(() => {
+    isModifyCompleted && history.push("/contacts");
+  }, [isModifyCompleted, history]);
 
   const handleSaveClick = () => {
     if (contactItem) {

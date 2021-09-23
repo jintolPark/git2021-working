@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
-import { removePhoto } from "./photoSlice";
+import { requestRemovePhotos } from "./photoSaga";
+// import { removePhoto } from "./photoSlice";
 
 const PhotoDetail = () => {
   // useParam<타입>(), 매개변수들을 객체화할 형식을 제너릭으로 넣어줌
@@ -19,11 +21,19 @@ const PhotoDetail = () => {
   // ) as PhotoItem; // 타입 단언 (type assertion)
   // console.log(photoItem);
 
+  const isRemoveCompleted = useSelector((state: RootState) => state.photo.isRemoveCompleted)
+
   const history = useHistory();
   const dispatch = useDispatch<AppDispatch>();
 
+  useEffect(() => {
+    isRemoveCompleted && history.push("/photos");
+  }, [isRemoveCompleted, history])
+
   const handDeleteClick = () => {
-    dispatch(removePhoto(+id)); // id값만 넣어서 삭제
+
+    dispatch(requestRemovePhotos(+id));
+    // dispatch(removePhoto(+id)); // id값만 넣어서 삭제
     history.push("/photos"); // 목록화면으로 이동
   };
 
