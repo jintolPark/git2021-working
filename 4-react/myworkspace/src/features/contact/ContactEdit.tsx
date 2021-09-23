@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
-import { modifyContact } from "./ContactSlice"
+import { modifyContact } from "./contactSlice"
 
 const ContactEdit = () => {
   const { id } = useParams<{ id: string }>();
@@ -22,13 +22,13 @@ const ContactEdit = () => {
   const handleSaveClick = () => {
     if (contactItem) {
       const item = { ...contactItem };
-      item.contact1 = nameInput.current ? nameInput.current.value : "";
-      item.contact2 = phoneNumInput.current ? phoneNumInput.current.value : "";
-      item.contact3 = emailInput.current ? emailInput.current.value : "";
+      item.name = nameInput.current ? nameInput.current.value : "";
+      item.phoneNum = phoneNumInput.current ? phoneNumInput.current.value : "";
+      item.email = emailInput.current ? emailInput.current.value : "";
       item.description = descText.current ? descText.current.value : "";
 
       dispatch(modifyContact(item));
-      history.push("/contact")
+      history.push("/contacts")
     };
   }
 
@@ -46,21 +46,21 @@ const ContactEdit = () => {
                   className="form-control"
                   type="text"
                   ref={nameInput}
-                  defaultValue={contactItem?.contact1} />
+                  defaultValue={contactItem?.name} />
               </td>
               <td>
                 <input
                   className="form-control"
                   type="text"
                   ref={phoneNumInput}
-                  defaultValue={contactItem?.contact2} />
+                  defaultValue={contactItem?.phoneNum} />
               </td>
               <td>
                 <input
                   className="form-control"
                   type="text"
                   ref={emailInput}
-                  defaultValue={contactItem?.contact3} />
+                  defaultValue={contactItem?.email} />
               </td>
             </tr>
           </tbody>
@@ -77,7 +77,7 @@ const ContactEdit = () => {
         <button
           className="btn btn-secondary float-start"
           onClick={() => {
-            history.push("/contact");
+            history.push("/contacts");
           }}
         >
           <i className="bi bi-grid-3x3-gap me-1"></i>

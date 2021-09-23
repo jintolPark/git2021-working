@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
-import { modifyPhoto } from "./PhotoSlice";
+import { modifyPhoto } from "./photoSlice";
 
 const PhotoEdit = () => {
   // ------ 데이터를 가져오거나 변수를 선언하는 부분 --------
@@ -55,7 +55,7 @@ const PhotoEdit = () => {
 
           // reducer로 state 수정 및 목록으로 이동
           dispatch(modifyPhoto(item));
-          history.push("/photo");
+          history.push("/photos");
         }
       };
 
@@ -72,7 +72,7 @@ const PhotoEdit = () => {
 
         // reducer로 state 수정 및 목록으로 이동
         dispatch(modifyPhoto(item));
-        history.push("/photo");
+        history.push("/photos");
       }
     }
   };
@@ -81,8 +81,8 @@ const PhotoEdit = () => {
     <div style={{ width: "40vw" }} className="mx-auto">
       <h2 className="text-center">Photo Edit</h2>
       <form>
-        <table className="table text-nowrap">
-          <tbody>
+        <table className="table">
+          <tbody className="text-nowrap">
             <tr>
               <th>제목</th>
               <td>
@@ -110,7 +110,7 @@ const PhotoEdit = () => {
               <td>
                 <img src={url} className="card-img-top" alt={photoItem?.title} />
                 <input
-                  className="form-control"
+                  className="form-control "
                   type="file"
                   accept="image/*"
                   ref={fileInput}
@@ -127,7 +127,7 @@ const PhotoEdit = () => {
         <button
           className="btn btn-secondary me-1 float-start"
           onClick={() => {
-            history.push("/photo");
+            history.push("/photos");
           }}
         >
           <i className="bi bi-grid-3x3-gap me-1"></i>

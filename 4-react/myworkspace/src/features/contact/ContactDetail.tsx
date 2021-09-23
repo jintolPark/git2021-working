@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
-import { removeContact } from "./ContactSlice";
+import { removeContact } from "./contactSlice";
 
 
 const ContactDetail = () => {
@@ -19,7 +19,7 @@ const ContactDetail = () => {
 
   const handDeleteClick = () => {
     dispatch(removeContact(+id));
-    history.push("/contact")
+    history.push("/contacts")
   }
   return (
     <div style={{ width: "40vw" }} className="mx-auto">
@@ -30,13 +30,13 @@ const ContactDetail = () => {
             <tr>
               <th>입력</th>
               <td>
-                {contactItem?.contact1}
+                {contactItem?.name}
               </td>
               <td>
-                {contactItem?.contact2}
+                {contactItem?.phoneNum}
               </td>
               <td>
-                {contactItem?.contact3}
+                {contactItem?.email}
               </td>
             </tr>
           </tbody>
@@ -50,7 +50,7 @@ const ContactDetail = () => {
           <button
             className="btn btn-secondary float-start"
             onClick={() => {
-              history.push("/contact");
+              history.push("/contacts");
             }}
           >
             <i className="bi bi-grid-3x3-gap me-1"></i>
@@ -63,7 +63,7 @@ const ContactDetail = () => {
           <button
             className="btn btn-primary me-1"
             onClick={() => {
-              history.push(`/contact/edit/${id}`)
+              history.push(`/contacts/edit/${id}`)
             }}>
             <i className="bi bi-pencil me-1" />
             수정

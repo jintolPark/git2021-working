@@ -2,7 +2,9 @@ import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
-import { addPhoto, PhotoItem } from "./PhotoSlice";
+import { requestAddPhoto } from "./photoSaga";
+import { PhotoItem } from "./photoSlice";
+// import { addPhoto } from "./photoSlice";
 
 const PhotoCreate = () => {
   // 입력 폼 ref 객체
@@ -12,8 +14,6 @@ const PhotoCreate = () => {
 
   // 포토 데이터 배열 가져오기
   const photoData = useSelector((state: RootState) => state.photo.data);
-  // 프로필 정보 가져오기
-  const profile = useSelector((state: RootState) => state.profile);
 
   // dispatch 함수 만들기
   const dispatch = useDispatch<AppDispatch>();
@@ -22,10 +22,10 @@ const PhotoCreate = () => {
   const history = useHistory();
 
   const handleAddClick = () => {
-    console.log(titleInput.current?.value);
-    console.log(descTxta.current?.value);
+    // console.log(titleInput.current?.value);
+    // console.log(descTxta.current?.value);
     if (fileInput.current?.files?.length) {
-      console.log(fileInput.current.files[0]);
+      // console.log(fileInput.current.files[0]);
     }
 
     if (fileInput.current?.files?.length) {
@@ -36,9 +36,6 @@ const PhotoCreate = () => {
         const item: PhotoItem = {
           // 기존데이터의 id 중에서 가장 큰 것 + 1
           id: photoData.length ? photoData[0].id + 1 : 1,
-          // 프로필 정보
-          profileUrl: profile.image ? profile.image : "",
-          username: profile.username ? profile.username : "",
           // 입력 정보
           title: titleInput.current ? titleInput.current.value : "",
           description: descTxta.current?.value,
@@ -49,7 +46,7 @@ const PhotoCreate = () => {
           createdTime: new Date().getTime(),
         };
 
-        console.log(item);
+        // console.log(item);
 
         // state에 데이터 추가
         // 1. addPhoto함수에서 Action 객체를 생성함
@@ -57,7 +54,12 @@ const PhotoCreate = () => {
         // 2. Action 객체를 Dispatcher에 전달함
         // 3. Dispatcher에서 Action.type에 맞는 리듀서 함수를 실행
         //    -> 기존 state와 action객체를 매개변수를 넣어주고 실행
-        dispatch(addPhoto(item));
+
+        /* ----- 기존 redux action ----- */
+        // dispatch(addPhoto(item));
+
+        /* ----- saga action으로 대체 ----- */
+        dispatch(requestAddPhoto(item));
 
         // ** action creator를 사용하지 않고 아래 방법으로도 가능함
         // type: slice이름/reducer함수이름
@@ -72,7 +74,7 @@ const PhotoCreate = () => {
         // });
 
         // 목록 화면으로 이동
-        history.push("/photo");
+        history.push("/photos");
       };
 
       reader.readAsDataURL(imageFile);
@@ -83,7 +85,7 @@ const PhotoCreate = () => {
     <div style={{ width: "40vw" }} className="mx-auto">
       <h2 className="text-center">Photo Create</h2>
       <form>
-        <table className="table text-nowrap">
+        <table className="table">
           <tbody>
             <tr>
               <th>제목</th>
@@ -119,7 +121,7 @@ const PhotoCreate = () => {
         <button
           className="btn btn-secondary float-start"
           onClick={() => {
-            history.push("/photo");
+            history.push("/photos");
           }}
         >
           <i className="bi bi-grid-3x3-gap me-1"></i>

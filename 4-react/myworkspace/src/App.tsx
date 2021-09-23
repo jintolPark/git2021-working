@@ -53,16 +53,16 @@ function App() {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/todo">Todo</Link>
+                <Link to="/todos">Todo</Link>
               </li>
               <li>
                 <Link to="/feeds">Feeds</Link>
               </li>
               <li>
-                <Link to="/contact">Contact</Link>
+                <Link to="/contacts">Contact</Link>
               </li>
               <li>
-                <Link to="/photo">Photo</Link>
+                <Link to="/photos">Photo</Link>
               </li>
             </ul>
           </nav>
@@ -76,16 +76,16 @@ function App() {
                 {/* 해당 경로에 대해서 로딩할 컴포넌트 목록을 작성 */}
                 {/* exact: 속성은 true/false, 경로가 정확히 일치 할때만 */}
                 <Route path="/" component={Home} exact />
-                <Route path="/todo" component={Todo} />
+                <Route path="/todos" component={Todo} />
                 <Route path="/feeds" component={Feed} />
-                <Route path="/contact" component={Contact} exact />
-                <Route path="/contact/create" component={ContactCreate} />
-                <Route path="/contact/detail/:id" component={ContactDetail} />
-                <Route path="/contact/edit/:id" component={ContactEdit} />
-                <Route path="/photo" component={Photo} exact />
-                <Route path="/photo/create" component={PhotoCreate} />
-                <Route path="/photo/detail/:id" component={PhotoDetail} />
-                <Route path="/photo/edit/:id" component={PhotoEdit} />
+                <Route path="/contacts" component={Contact} exact />
+                <Route path="/contacts/create" component={ContactCreate} />
+                <Route path="/contacts/detail/:id" component={ContactDetail} />
+                <Route path="/contacts/edit/:id" component={ContactEdit} />
+                <Route path="/photos" component={Photo} exact />
+                <Route path="/photos/create" component={PhotoCreate} />
+                <Route path="/photos/detail/:id" component={PhotoDetail} />
+                <Route path="/photos/edit/:id" component={PhotoEdit} />
               </Switch>
             </Suspense>
           </main>

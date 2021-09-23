@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
-import { removePhoto } from "./PhotoSlice";
+import { removePhoto } from "./photoSlice";
 
 const PhotoDetail = () => {
   // useParam<타입>(), 매개변수들을 객체화할 형식을 제너릭으로 넣어줌
@@ -9,7 +9,7 @@ const PhotoDetail = () => {
   // 타입에 따라서 처리를 다르게 하기위함
   // 객체지향 다형성(poly mophism): 같은 이름의 함수가 내부적으로 처리를 다르게 해줌
   const { id } = useParams<{ id: string }>();
-  console.log(id);
+  // console.log(id);
 
   // 타입 단언을 하지 않으면 추론에 의해서 PhotoItem | undefined 타입이 됨
   // 타입 단언을 하면 반환 형식을 정의할 수 있음
@@ -17,14 +17,14 @@ const PhotoDetail = () => {
     state.photo.data.find((item) => item.id === +id)
   ); // 반환형식을 타입 추론으로 처리
   // ) as PhotoItem; // 타입 단언 (type assertion)
-  console.log(photoItem);
+  // console.log(photoItem);
 
   const history = useHistory();
   const dispatch = useDispatch<AppDispatch>();
 
   const handDeleteClick = () => {
     dispatch(removePhoto(+id)); // id값만 넣어서 삭제
-    history.push("/photo"); // 목록화면으로 이동
+    history.push("/photos"); // 목록화면으로 이동
   };
 
   return (
@@ -32,8 +32,8 @@ const PhotoDetail = () => {
       <h2 className="text-center">Photo Detail</h2>
       {!photoItem && <div className="text-center my-5">데이터가 없습니다.</div>}
       {photoItem && (
-        <table className="table text-nowrap">
-          <tbody>
+        <table className="table">
+          <tbody className="text-nowrap">
             <tr>
               <th>제목</th>
               <td>{photoItem.title}</td>
@@ -45,7 +45,12 @@ const PhotoDetail = () => {
             <tr>
               <th>이미지</th>
               <td>
-                <img src={photoItem.photoUrl} className="card-img-top" alt={photoItem.title} />
+                <img
+                  src={photoItem.photoUrl}
+                  alt={photoItem.title}
+                  className="card-img-top"
+                  width={"100%"}
+                />
               </td>
             </tr>
           </tbody>
@@ -57,7 +62,7 @@ const PhotoDetail = () => {
           <button
             className="btn btn-secondary me-1"
             onClick={() => {
-              history.push("/photo");
+              history.push("/photos");
             }}
           >
             <i className="bi bi-grid-3x3-gap me-1"></i>
@@ -68,7 +73,7 @@ const PhotoDetail = () => {
           <button
             className="btn btn-primary me-1"
             onClick={() => {
-              history.push(`/photo/edit/${id}`);
+              history.push(`/photos/edit/${id}`);
             }}
           >
             <i className="bi bi-pencil me-1" />

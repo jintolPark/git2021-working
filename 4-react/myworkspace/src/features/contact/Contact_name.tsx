@@ -4,9 +4,9 @@ import Alert from "../../components/Alert"
 
 interface ContactState {
   id: number;
-  contact1: string | undefined;
-  contact2: string | undefined;
-  contact3: string | undefined;
+  name: string | undefined;
+  phoneNum: string | undefined;
+  email: string | undefined;
   isEdit?: boolean;
 }
 
@@ -33,9 +33,9 @@ const Contact = () => {
     }
     const contact: ContactState = {
       id: contactList.length > 0 ? contactList[0].id + 1 : 1,
-      contact1: inputRef1.current?.value,
-      contact2: inputRef2.current?.value,
-      contact3: inputRef3.current?.value
+      name: inputRef1.current?.value,
+      phoneNum: inputRef2.current?.value,
+      email: inputRef3.current?.value
     }
 
     setContactList(
@@ -75,9 +75,9 @@ const Contact = () => {
       produce((state) => {
         const item = state.find((item) => item.id === id);
         if (item) {
-          item.contact1 = input1?.value;
-          item.contact2 = input2?.value;
-          item.contact3 = input3?.value;
+          item.name = input1?.value;
+          item.phoneNum = input2?.value;
+          item.email = input3?.value;
           item.isEdit = false;
         }
       })
@@ -155,19 +155,19 @@ const Contact = () => {
               <tr key={item.id}>
                 <td scope="row">{item.id}</td>
                 <td>
-                  {!item.isEdit && <td>{item.contact1}</td>}
+                  {!item.isEdit && <td>{item.name}</td>}
                   {item.isEdit && (
-                    <input type="text" className="w-100" defaultValue={item.contact1} />
+                    <input type="text" className="w-100" defaultValue={item.name} />
                   )}</td>
                 <td>
-                  {!item.isEdit && <td>{item.contact2}</td>}
+                  {!item.isEdit && <td>{item.phoneNum}</td>}
                   {item.isEdit && (
-                    <input type="text" className="w-100" defaultValue={item.contact2} />
+                    <input type="text" className="w-100" defaultValue={item.phoneNum} />
                   )} </td>
                 <td>
-                  {!item.isEdit && <td>{item.contact3}</td>}
+                  {!item.isEdit && <td>{item.email}</td>}
                   {item.isEdit && (
-                    <input type="text" className="w-100" defaultValue={item.contact3} />
+                    <input type="text" className="w-100" defaultValue={item.email} />
                   )}</td>
                 <td className="text-center">
                   {!item.isEdit && (

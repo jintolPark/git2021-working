@@ -1,8 +1,9 @@
 import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
+import { requestAddContact } from "./contactSaga";
 import { AppDispatch, RootState } from "../../store";
-import { addContact, ContactItem } from "./ContactSlice";
+import { ContactItem } from "./contactSlice";
 
 
 const ContactCreate = () => {
@@ -11,7 +12,7 @@ const ContactCreate = () => {
   const emailInput = useRef<HTMLInputElement>(null)
   const descText = useRef<HTMLTextAreaElement>(null)
 
-  const ContactData = useSelector((state: RootState) => state.contact.data);
+  const contactData = useSelector((state: RootState) => state.contact.data);
   // const profile = useSelector((state: RootState) => state.profile);
 
   const dispatch = useDispatch<AppDispatch>();
@@ -19,23 +20,25 @@ const ContactCreate = () => {
   const history = useHistory();
 
   const handleAddClick = () => {
-    console.log(nameInput.current?.value);
-    console.log(phoneNumInput.current?.value);
-    console.log(emailInput.current?.value);
-    console.log(descText.current?.value);
+    // console.log(nameInput.current?.value);
+    // console.log(phoneNumInput.current?.value);
+    // console.log(emailInput.current?.value);
+    // console.log(descText.current?.value);
     const item: ContactItem = {
-      id: ContactData.length ? ContactData[0].id + 1 : 1,
-      contact1: nameInput.current ? nameInput.current.value : "",
-      contact2: phoneNumInput.current ? phoneNumInput.current.value : "",
-      contact3: emailInput.current ? emailInput.current.value : "",
+      id: contactData.length ? contactData[0].id + 1 : 1,
+      name: nameInput.current ? nameInput.current.value : "",
+      phoneNum: phoneNumInput.current ? phoneNumInput.current.value : "",
+      email: emailInput.current ? emailInput.current.value : "",
       description: descText.current ? descText.current.value : "",
       createdTime: new Date().getTime(),
     };
-    console.log(item)
+    // console.log(item)
 
-    dispatch(addContact(item));
+    // dispatch(addContact(item));
+    dispatch(requestAddContact(item));
 
-    history.push("/contact");
+
+    history.push("/contacts");
   }
   return (
     <div style={{ width: "40vw" }} className="mx-auto">
@@ -69,7 +72,7 @@ const ContactCreate = () => {
         <button
           className="btn btn-secondary float-start"
           onClick={() => {
-            history.push("/contact");
+            history.push("/contacts");
           }}
         >
           <i className="bi bi-grid-3x3-gap me-1"></i>
