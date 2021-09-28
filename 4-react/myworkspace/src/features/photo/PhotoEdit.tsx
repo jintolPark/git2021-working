@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
-import { requestModifyPhotos } from "./photoSaga";
+import { requestModifyPhoto } from "./photoSaga";
 import { PhotoItem } from "./photoSlice";
 
 const PhotoEdit = () => {
@@ -85,7 +85,7 @@ const PhotoEdit = () => {
 
   const saveItem = (item: PhotoItem) => {
     // dispatch(modifyPhoto(item));
-    dispatch(requestModifyPhotos(item));
+    dispatch(requestModifyPhoto(item));
     // history.push("/photos");
   };
 
