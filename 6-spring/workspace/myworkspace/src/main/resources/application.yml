@@ -1,0 +1,11 @@
+# yml(yaml, 야믈(야멀))
+# 시스템 설정에 사용하느 파일
+spring: 
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://database-1.cdcwtlpbn02u.ap-northeast-2.rds.amazonaws.com:5432/postgres?currentSchema=myworkspace
+    username: postgres
+    password: password123!
+  jpa:
+   show-sql: true
+   generate-ddl: true
