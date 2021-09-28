@@ -88,7 +88,6 @@ function App() {
                 <Route path="/photos/edit/:id" component={PhotoEdit} />
               </Switch>
             </Suspense>
-
             <Progress />
             <AlertStack />
           </main>

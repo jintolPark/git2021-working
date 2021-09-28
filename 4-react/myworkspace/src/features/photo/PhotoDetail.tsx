@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
-import { requestRemovePhotos } from "./photoSaga";
+import { requestRemovePhoto } from "./photoSaga";
 // import { removePhoto } from "./photoSlice";
 
 const PhotoDetail = () => {
@@ -32,7 +32,7 @@ const PhotoDetail = () => {
 
   const handDeleteClick = () => {
 
-    dispatch(requestRemovePhotos(+id));
+    dispatch(requestRemovePhoto(+id));
     // dispatch(removePhoto(+id)); // id값만 넣어서 삭제
     history.push("/photos"); // 목록화면으로 이동
   };

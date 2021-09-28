@@ -7,12 +7,16 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.git.myworkspace.lib.TextProcesser;
@@ -28,12 +32,20 @@ public class ContactController {
 	}
 
 	@GetMapping(value = "/contacts")
-	public List<Contact> getContacts() {
-		return repo.findAll();
+	public List<Contact> getContacts() throws InterruptedException {
+//		id 역정렬
+		// Sort.by("정렬컬럼").descending()
+		// Sort.by("정렬컬럼").ascending()
+		return repo.findAll(Sort.by("id").descending());
+	}
+
+	@GetMapping("/contacts/paging")
+	public Page<Contact> getContactsPaging(@RequestParam int page, @RequestParam int size) {
+		return repo.findAll(PageRequest.of(page, size, Sort.by("id").descending()));
 	}
 
 	@PostMapping(value = "/contacts")
-	public Contact addContact(@RequestBody Contact contact, HttpServletResponse res) {
+	public Contact addContact(@RequestBody Contact contact, HttpServletResponse res) throws InterruptedException {
 		System.out.println(contact);
 
 		if (TextProcesser.isEmptyText(contact.getName())) {
@@ -63,7 +75,7 @@ public class ContactController {
 	}
 
 	@DeleteMapping(value = "/contacts/{id}")
-	public boolean removeContact(@PathVariable long id, HttpServletResponse res) {
+	public boolean removeContact(@PathVariable long id, HttpServletResponse res) throws InterruptedException {
 		Optional<Contact> contact = repo.findById(id);
 		if (contact.isEmpty()) {
 			res.setStatus(HttpServletResponse.SC_NOT_FOUND);
