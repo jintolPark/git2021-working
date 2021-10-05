@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ import com.google.gson.Gson;
 @Service
 public class AirService {
 
-	private final String SERVICE_KEY = "vpk2JF%2BIdAY5xEW1b4zpj%2Bk0YFYtFKpp7NppWvJfnfhRG%2BZYxkO0DCBeDINkXk1J0rXRbZbTr87hLlsofn6RPg%3D%3D";
+	private final String SERVICE_KEY = "8x9EEMlvpXLrqor89PreIVvrNAtT2rkM%2Be6FOns1GkNS6aQdSlFL0BpFU4e%2F5GoeKa9t1Y1ztK6wfP90DIO%2Ftw%3D%3D";
 
 	private AirSigunguHourRepository repo;
 
@@ -39,12 +40,15 @@ public class AirService {
 	// 그 시간이 되어야만 실행됨
 	// cron="초 분 시 일 월 년"
 	// cron="0 30 * * * *"
-//	@Scheduled(cron = "0 30 * * * *")
+	@Scheduled(cron = "0 30 * * * *")
 
 	// 1시간마다 실행(js, setInterval)
 	// fixedRate: 가장 처음에 실행되고 간격별로 실행됨
-	@Scheduled(fixedRate = 1000 * 60 * 60 * 1)
+//	@Scheduled(fixedRate = 1000 * 60 * 60 * 1)
+	// @CacheEvict(value="캐시이름", allEntries = true): 해당 캐시이름의 모든 키를 삭제
+	@CacheEvict(value = "air-current", allEntries = true)
 	public void requestAir() throws IOException {
+//		String[] sidoNames = { "서울", "경기" };
 		String[] sidoNames = { "서울" };
 		for (String sidoName : sidoNames) {
 			requestAirSiGunGuHour(sidoName);
@@ -68,7 +72,7 @@ public class AirService {
 		builder.append("&pageNo=1&numOfRows=100"); // 시군구 개수
 		builder.append("&serviceKey=" + SERVICE_KEY); // 서비스키
 
-//		System.out.println(builder.toString());
+		System.out.println(builder.toString());
 
 		// 2. URL 객체 생성
 		URL url = new URL(builder.toString());
@@ -81,17 +85,17 @@ public class AirService {
 
 		// 5. byte[] -> 문자열(XML) 변환
 		String data = new String(result, "UTF-8");
-//		System.out.println(data);
+		System.out.println(data);
 		/* ---------------------- 데이터 요청하고 XML 받아오기 끝 ----------------- */
 
 		/* ---------------------- XML -> JSON -> Object(Java) 시작 ----------------- */
 		// XML(문자열) -> JSON(문자열)
 		String json = XML.toJSONObject(data).toString(2);
-//		System.out.println(json);
+		System.out.println(json);
 
 		// JSON(문자열) -> Java(object)
 		AirSigunguHourResponse response = new Gson().fromJson(json, AirSigunguHourResponse.class);
-//		System.out.println(response);
+		System.out.println(response);
 
 //		// 강동구 데이터
 //		AirSigunguHourResponse.Item item = response.getResponse().getBody().getItems().getItem().get(1);
