@@ -17,8 +17,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(indexes = @Index(name = "idx_covid_service_day_1", columnList = "gubun"))
-@IdClass(CovidGubunDayId.class)
-public class CovidGubunDay {
+@IdClass(CovidSidoDailyId.class)
+public class CovidSidoDaily {
 	@Id
 	private String createDt;
 	@Id

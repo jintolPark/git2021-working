@@ -13,6 +13,7 @@ import java.util.List;
 import org.json.JSONObject;
 import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -23,10 +24,10 @@ public class CovidService {
 
 	private final String SERVICE_KEY = "vpk2JF%2BIdAY5xEW1b4zpj%2Bk0YFYtFKpp7NppWvJfnfhRG%2BZYxkO0DCBeDINkXk1J0rXRbZbTr87hLlsofn6RPg%3D%3D";
 
-	private CovidGubunDayRepository repo;
+	private CovidSidoDailyRepository repo;
 
 	@Autowired
-	public CovidService(CovidGubunDayRepository repo) {
+	public CovidService(CovidSidoDailyRepository repo) {
 		this.repo = repo;
 	}
 
@@ -49,7 +50,8 @@ public class CovidService {
 	}
 
 //	@Scheduled(fixedRate = 1000 * 60 * 60 * 1)
-	@Scheduled(cron = "0 30 * * * *")
+	@Scheduled(cron = "0 5 10 * * *")
+	@CacheEvict(value = "covid-current", allEntries = true)
 //	@SuppressWarnings("deprecation")
 	public void requestCovidConfirmed() throws IOException {
 		StringBuilder builder = new StringBuilder();
@@ -78,13 +80,13 @@ public class CovidService {
 
 		String json = jsonObj.toString(2);
 
-		CovidGubunDayResponse response = new Gson().fromJson(json, CovidGubunDayResponse.class);
+		CovidSidoDailyResponse response = new Gson().fromJson(json, CovidSidoDailyResponse.class);
 		System.out.println(response);
 
-		List<CovidGubunDay> list = new ArrayList<CovidGubunDay>();
+		List<CovidSidoDaily> list = new ArrayList<CovidSidoDaily>();
 
-		for (CovidGubunDayResponse.Item item : response.getResponse().getBody().getItems().getItem()) {
-			CovidGubunDay record = CovidGubunDay.builder().createDt(item.getCreateDt()).stdDay(item.getStdDay())
+		for (CovidSidoDailyResponse.Item item : response.getResponse().getBody().getItems().getItem()) {
+			CovidSidoDaily record = CovidSidoDaily.builder().createDt(item.getCreateDt()).stdDay(item.getStdDay())
 					.isolClearCnt(item.getIsolClearCnt()).deathCnt(item.getDeathCnt()).inDec(item.getInDec())
 					.defCnt(item.getDefCnt()).gubun(item.getGubun()).isolIngCnt(item.getIsolIngCnt())
 					.localOccCnt(item.getLocalOccCnt()).overFlowCnt(item.getOverFlowCnt()).build();

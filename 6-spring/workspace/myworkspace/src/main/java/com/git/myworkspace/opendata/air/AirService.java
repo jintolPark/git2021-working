@@ -22,7 +22,7 @@ import com.google.gson.Gson;
 @Service
 public class AirService {
 
-	private final String SERVICE_KEY = "8x9EEMlvpXLrqor89PreIVvrNAtT2rkM%2Be6FOns1GkNS6aQdSlFL0BpFU4e%2F5GoeKa9t1Y1ztK6wfP90DIO%2Ftw%3D%3D";
+	private final String SERVICE_KEY = "vpk2JF%2BIdAY5xEW1b4zpj%2Bk0YFYtFKpp7NppWvJfnfhRG%2BZYxkO0DCBeDINkXk1J0rXRbZbTr87hLlsofn6RPg%3D%3D";
 
 	private AirSigunguHourRepository repo;
 
@@ -106,7 +106,9 @@ public class AirService {
 		List<AirSigunguHour> list = new ArrayList<AirSigunguHour>();
 		for (AirSigunguHourResponse.Item item : response.getResponse().getBody().getItems().getItem()) {
 			AirSigunguHour record = AirSigunguHour.builder().dataTime(item.getDataTime()).sidoName(item.getSidoName())
-					.cityName(item.getCityName()).pm10Value(item.getPm10Value()).pm25Value(item.getPm25Value()).build();
+					.cityName(item.getCityName())
+					.pm10Value(item.getPm10Value().isEmpty() ? null : Integer.valueOf(item.getPm10Value()))
+					.pm25Value(item.getPm25Value().isEmpty() ? null : Integer.valueOf(item.getPm25Value())).build();
 
 			list.add(record);
 		}
