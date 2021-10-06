@@ -32,7 +32,6 @@ public class CovidController {
 	public List<CovidSidoDaily> getCovidSidoCurrent() {
 		List<Order> orders = new ArrayList<Order>();
 		orders.add(new Order(Sort.Direction.DESC, "stdDay"));
-//		orders.add(new Order(Sort.Direction.ASC, "gubun"));
 		return repo.findAll(PageRequest.of(0, 19, Sort.by(orders))).toList();
 	}
 

@@ -50,7 +50,7 @@ public class CovidService {
 	}
 
 //	@Scheduled(fixedRate = 1000 * 60 * 60 * 1)
-	@Scheduled(cron = "0 5 10 * * *")
+	@Scheduled(cron = "0 35 * * * *")
 	@CacheEvict(value = "covid-current", allEntries = true)
 //	@SuppressWarnings("deprecation")
 	public void requestCovidConfirmed() throws IOException {
@@ -86,11 +86,16 @@ public class CovidService {
 		List<CovidSidoDaily> list = new ArrayList<CovidSidoDaily>();
 
 		for (CovidSidoDailyResponse.Item item : response.getResponse().getBody().getItems().getItem()) {
-			CovidSidoDaily record = CovidSidoDaily.builder().createDt(item.getCreateDt()).stdDay(item.getStdDay())
-					.isolClearCnt(item.getIsolClearCnt()).deathCnt(item.getDeathCnt()).inDec(item.getInDec())
-					.defCnt(item.getDefCnt()).gubun(item.getGubun()).isolIngCnt(item.getIsolIngCnt())
-					.localOccCnt(item.getLocalOccCnt()).overFlowCnt(item.getOverFlowCnt()).build();
+			CovidSidoDaily record = CovidSidoDaily.builder().stdDay(item.getStdDay())
+					.localOccCnt(item.getLocalOccCnt().isEmpty() ? null : Integer.valueOf(item.getLocalOccCnt()))
+					.overFlowCnt(item.getOverFlowCnt().isEmpty() ? null : Integer.valueOf(item.getOverFlowCnt()))
+					.gubun(item.getGubun()).build();
 			list.add(record);
+//			CovidSidoDaily record = CovidSidoDaily.builder().createDt(item.getCreateDt()).stdDay(item.getStdDay())
+//					.isolClearCnt(item.getIsolClearCnt()).deathCnt(item.getDeathCnt()).inDec(item.getInDec())
+//					.defCnt(item.getDefCnt()).gubun(item.getGubun()).isolIngCnt(item.getIsolIngCnt())
+//					.localOccCnt(item.getLocalOccCnt()).overFlowCnt(item.getOverFlowCnt()).build();
+//			list.add(record);
 		}
 		repo.saveAll(list);
 	}
