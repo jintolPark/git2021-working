@@ -50,7 +50,7 @@ public class CovidService {
 	}
 
 //	@Scheduled(fixedRate = 1000 * 60 * 60 * 1)
-	@Scheduled(cron = "0 35 * * * *")
+	@Scheduled(cron = "0 5 10 * * *")
 	@CacheEvict(value = "covid-current", allEntries = true)
 //	@SuppressWarnings("deprecation")
 	public void requestCovidConfirmed() throws IOException {
@@ -61,8 +61,8 @@ public class CovidService {
 		builder.append("?serviceKey=" + SERVICE_KEY);
 		builder.append("&pageNo=1");
 		builder.append("&numOfRows=10");
-		builder.append("&startCreateDt=" + today());
-		builder.append("&endCreateDt=" + today());
+		builder.append("&startCreateDt=20210901" + today());
+		builder.append("&endCreateDt=20211006" + today());
 		System.out.println(builder.toString());
 
 		URL url = new URL(builder.toString());

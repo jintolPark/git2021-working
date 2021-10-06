@@ -38,7 +38,7 @@ public class CovidController {
 	@Cacheable(value = cachName, key = "#gubun")
 	@GetMapping(value = "/sido/current/{gubun}")
 	public List<CovidSidoDaily> getCovidSidoCurrent(@PathVariable String gubun) {
-		Pageable page = PageRequest.of(0, 7, Sort.by("stdDay").descending());
+		Pageable page = PageRequest.of(0, 14, Sort.by("stdDay").descending());
 		return repo.findByGubun(page, gubun);
 	}
 }
