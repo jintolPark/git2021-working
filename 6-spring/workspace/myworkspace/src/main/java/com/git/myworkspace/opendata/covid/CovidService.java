@@ -61,8 +61,8 @@ public class CovidService {
 		builder.append("?serviceKey=" + SERVICE_KEY);
 		builder.append("&pageNo=1");
 		builder.append("&numOfRows=10");
-		builder.append("&startCreateDt=20210901" + today());
-		builder.append("&endCreateDt=20211006" + today());
+		builder.append("&startCreateDt=" + today());
+		builder.append("&endCreateDt=" + today());
 		System.out.println(builder.toString());
 
 		URL url = new URL(builder.toString());
