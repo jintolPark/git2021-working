@@ -1,0 +1,8 @@
+server:
+  port: 9091
+spring:
+  rabbitmq:
+    #rabbitMQ 서버주소
+    host: ec2-3-36-113-149.ap-northeast-2.compute.amazonaws.com
+    username: rabbitmq
+    password: password123
