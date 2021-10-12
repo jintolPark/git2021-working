@@ -1,5 +1,13 @@
 import axios from "axios";
 
+export interface ContactPagingResponse {
+  content: ContactItemResponse[];
+  last: boolean;
+  totalElements: number;
+  totalPages: number;
+  size: number;
+  number: number;
+}
 // 서버로 부터 받아오는 데이터 1건
 export interface ContactItemResponse {
   id: number;
@@ -19,16 +27,24 @@ export interface ContactItemRequest {
 
 const contactApi = {
   fetch: () =>
-    axios.get<ContactItemResponse[]>(`${process.env.REACT_APP_API_BASE}/contacts`),
+    axios.get<ContactItemResponse[]>(`http://ec2-54-180-117-20.ap-northeast-2.compute.amazonaws.com:8080/contacts`),
+
+    fetchPaging: (page: number, size: number) =>
+    axios.get<ContactItemResponse[]>(
+      `http://ec2-54-180-117-20.ap-northeast-2.compute.amazonaws.com:8080/contacts=${page}&size=${size}`
+      ),
 
   add: (contactItem: ContactItemRequest) =>
-    axios.post<ContactItemResponse>(`${process.env.REACT_APP_API_BASE}/contacts`, contactItem),
+    axios.post<ContactItemResponse>(
+      `http://ec2-54-180-117-20.ap-northeast-2.compute.amazonaws.com:8080/contacts`, contactItem),
 
   remove: (id: number) =>
-    axios.delete<boolean>(`${process.env.REACT_APP_API_BASE}/contacts/${id}`),
+    axios.delete<boolean>(
+      `http://ec2-54-180-117-20.ap-northeast-2.compute.amazonaws.com:8080/contacts/${id}`),
 
   modify: (id: number, contactItem: ContactItemRequest) =>
-    axios.put<ContactItemResponse>(`${process.env.REACT_APP_API_BASE}/contacts/${id}`, contactItem),
+    axios.put<ContactItemResponse>(
+      `$http://ec2-54-180-117-20.ap-northeast-2.compute.amazonaws.com:8080/contacts/${id}`, contactItem),
 }
 
 export default contactApi;

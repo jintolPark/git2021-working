@@ -50,7 +50,7 @@ public class CovidService {
 	}
 
 //	@Scheduled(fixedRate = 1000 * 60 * 60 * 1)
-	@Scheduled(cron = "0 5 10 * * *")
+	@Scheduled(cron = "0 5 11 * * *")
 	@CacheEvict(value = "covid-current", allEntries = true)
 //	@SuppressWarnings("deprecation")
 	public void requestCovidConfirmed() throws IOException {

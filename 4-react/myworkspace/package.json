@@ -35,7 +35,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "sudo scp -i \"newworkspace.pem\" -r ./build/* ubuntu@ec2-3-34-52-162.ap-northeast-2.compute.amazonaws.com:/home/ubuntu/web/myworkspace"
+    "deploy": "sudo scp -i \"/Users/jinseokmacbook/Desktop/keyfile/newworkspace.pem\" -r ./build/* ubuntu@ec2-54-180-117-20.ap-northeast-2.compute.amazonaws.com:/home/ubuntu/web/myworkspace"
   },
   "eslintConfig": {
     "extends": [

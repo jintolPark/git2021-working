@@ -1,0 +1,11 @@
+#!/bin/bash
+sudo scp -i "/Users/jinseokmacbook/Desktop/keyfile/projectworkspace.pem" -r ./build/libs/gateway*.jar ubuntu@ec2-52-78-57-152.ap-northeast-2.compute.amazonaws.com:/home/ubuntu/app/gateway
+
+#!/bin/bash
+sudo scp -i "/Users/jinseokmacbook/Desktop/keyfile/projectworkspace.pem" -r ./run.sh ubuntu@ec2-52-78-57-152.ap-northeast-2.compute.amazonaws.com:/home/ubuntu/app/gateway
+
+#!/bin/bash
+sudo ssh -i "/Users/jinseokmacbook/Desktop/keyfile/projectworkspace.pem" ubuntu@ec2-52-78-57-152.ap-northeast-2.compute.amazonaws.com "sudo chmod 777 /home/ubuntu/app/gateway/run.sh"
+
+#!/bin/bash
+sudo ssh -i "/Users/jinseokmacbook/Desktop/keyfile/projectworkspace.pem" ubuntu@ec2-52-78-57-152.ap-northeast-2.compute.amazonaws.com "cd /home/ubuntu/app/gateway; ./run.sh gateway"

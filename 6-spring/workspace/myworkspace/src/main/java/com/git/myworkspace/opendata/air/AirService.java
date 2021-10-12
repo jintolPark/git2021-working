@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.json.JSONObject;
 import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -39,12 +40,12 @@ public class AirService {
 	// 매시 30분에 실행, 1시 30분, 2시 30분
 	// 그 시간이 되어야만 실행됨
 	// cron="초 분 시 일 월 년"
-	// cron="0 30 * * * *"
-	@Scheduled(cron = "0 30 * * * *")
+	// cron="0 30 * * * *
 
 	// 1시간마다 실행(js, setInterval)
 	// fixedRate: 가장 처음에 실행되고 간격별로 실행됨
 //	@Scheduled(fixedRate = 1000 * 60 * 60 * 1)
+	@Scheduled(cron = "0 0 */1 * * *")
 	// @CacheEvict(value="캐시이름", allEntries = true): 해당 캐시이름의 모든 키를 삭제
 	@CacheEvict(value = "air-current", allEntries = true)
 	public void requestAir() throws IOException {
@@ -90,11 +91,11 @@ public class AirService {
 
 		/* ---------------------- XML -> JSON -> Object(Java) 시작 ----------------- */
 		// XML(문자열) -> JSON(문자열)
-		String json = XML.toJSONObject(data).toString(2);
-		System.out.println(json);
+		JSONObject jsonObj = XML.toJSONObject(data);
+		System.out.println(jsonObj);
 
 		// JSON(문자열) -> Java(object)
-		AirSigunguHourResponse response = new Gson().fromJson(json, AirSigunguHourResponse.class);
+		AirSigunguHourResponse response = new Gson().fromJson(jsonObj.toString(2), AirSigunguHourResponse.class);
 		System.out.println(response);
 
 //		// 강동구 데이터

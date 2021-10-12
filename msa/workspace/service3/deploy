@@ -1,0 +1,11 @@
+#!/bin/bash
+sudo scp -i "/Users/jinseokmacbook/Desktop/keyfile/newworkspace.pem" -r ./build/libs/service3*.jar ubuntu@ec2-54-180-117-20.ap-northeast-2.compute.amazonaws.com:/home/ubuntu/app/service3
+
+#!/bin/bash
+sudo scp -i "/Users/jinseokmacbook/Desktop/keyfile/newworkspace.pem" -r ./run.sh ubuntu@ec2-54-180-117-20.ap-northeast-2.compute.amazonaws.com:/home/ubuntu/app/service3
+
+#!/bin/bash
+sudo ssh -i "/Users/jinseokmacbook/Desktop/keyfile/newworkspace.pem" ubuntu@ec2-54-180-117-20.ap-northeast-2.compute.amazonaws.com "sudo chmod 777 /home/ubuntu/app/service3/run.sh"
+
+#!/bin/bash
+sudo ssh -i "/Users/jinseokmacbook/Desktop/keyfile/newworkspace.pem" ubuntu@ec2-54-180-117-20.ap-northeast-2.compute.amazonaws.com "cd /home/ubuntu/app/service3; ./run.sh service3"

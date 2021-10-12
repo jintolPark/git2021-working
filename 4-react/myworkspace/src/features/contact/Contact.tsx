@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
-import { requestFetchContact } from "./contactSaga";
+import { requestFetchContact, requestFetchContactNext } from "./contactSaga";
 
 const getTimeString = (unixtime: number) => {
 
@@ -23,9 +23,12 @@ const Contact = () => {
 
   useEffect(() => {
     if (!contact.isFetched) {
-      dispatch(requestFetchContact());
+      dispatch(requestFetchContactNext({
+        page: 0,
+        size: contact.pageSize,
+      }));
     }
-  }, [dispatch, contact.isFetched]);
+  }, [dispatch, contact.isFetched, contact.pageSize]);
 
 
   return (
@@ -96,10 +99,25 @@ const Contact = () => {
           </tbody>
         </table>
       </form>
-
-      <div>
-
+{!contact.isLast && (
+      <div className="d-flex justify-content-center mt-4">
+<a 
+href="#!"
+onClick={(e)=>{
+  e.preventDefault();
+  dispatch(
+    requestFetchContactNext({
+      page: contact.page + 1,
+      size: contact.pageSize,
+    })
+  )
+}}
+className="link-secondary fs-6 text-nowrap"
+>더보기
+</a>
       </div>
+)}
+
     </div>
 
   )

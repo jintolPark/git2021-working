@@ -26,7 +26,7 @@ const AirLine = () => {
         pm25Value: number;
       }[]
     >(
-      `${process.env.REACT_APP_API_BASE}/opendata/air/sido/current/${cityRef.current?.value}`
+      `http://ec2-54-180-117-20.ap-northeast-2.compute.amazonaws.com:8080/opendata/air/sido/current/${cityRef.current?.value}`
     );
 
     const data = result.data;
