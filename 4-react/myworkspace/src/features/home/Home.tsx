@@ -6,8 +6,7 @@ import CovidLine from "./CovidLine";
 const Home = () => {
   return (
     <div>
-      <CovidBar />
-      <CovidLine />
+      <CovidBar />      <CovidLine />
       <AirBar />
       <AirLine />
     </div>
